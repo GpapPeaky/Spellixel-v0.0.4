@@ -2,6 +2,9 @@
 
 /**
  * @brief To be put simply, just for the functions to be more readable...
+ * 
+ * @note Their use might no be a wise idea tbh
+ * @warning May make the code MORE confusing
 */
 
 #ifndef UTILS
