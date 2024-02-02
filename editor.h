@@ -7,6 +7,7 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include "macros.h"
+#include "utils.h"
 
 #ifndef EDITOR
 #define EDITOR
@@ -30,7 +31,7 @@ void init();
  * 
  * @param e Click event
 */
-void tile_on_click(SDL_Event& event);
+void tile_on_click(SDL_Event& event); /* Update type */
 
 /**
  * @brief Renders the tile map

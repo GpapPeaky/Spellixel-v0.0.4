@@ -4,7 +4,7 @@ int current_map_idx =  1; /* Depending on the map index, a new type of biome sho
 
 /*IDEA:  MOVE THIS FUCNTION SOMEWHERE ELSE */
 
-void update_mesh_positions(void) {
+Update_t update_mesh_positions(void) {
 
     srand(time(NULL));
 
@@ -30,7 +30,7 @@ void update_mesh_positions(void) {
     prev_pl_y = pl.pos.y;
 }
 
-int main(int argc, char** argv){
+MAIN_T main(int c, char** v){
 
     /*  TODO: ORGANISE ALL THE PRAGMAS INTO ONE FUNCTION EACH */
 

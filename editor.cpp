@@ -12,7 +12,7 @@ int currentTile = 0;
 
 std::unordered_map<int, SDL_Texture*> tileTextures;
 
-void init() {
+Init_t init(){
 
     SDL_Init(SDL_INIT_VIDEO);
     IMG_Init(IMG_INIT_PNG);
@@ -64,10 +64,10 @@ void init() {
     }
 }
 
-void tile_on_click(SDL_Event& event){
+Update_t tile_on_click(SDL_Event& event){
     if(event.type == SDL_QUIT){
         // Save the map and exit when the window is closed
-        std::ofstream file("output_map.mdf");
+        std::ofstream file("temp.mdf");
         file << mapData[0].size() << " " << mapData.size() << std::endl;
 
         for(const auto& row : mapData){
@@ -90,8 +90,7 @@ void tile_on_click(SDL_Event& event){
     }else if (event.type == SDL_KEYDOWN){
         switch (event.key.keysym.sym){
             case SDLK_ESCAPE: {
-                // Save the map and exit when the ESC key is pressed
-                std::ofstream file("output_map.mdf");
+                std::ofstream file("temp.mdf"); /* Save the map whenever I exit */
                 file << mapData[0].size() << " " << mapData.size() << std::endl;
 
                 for(const auto& row : mapData){
@@ -123,15 +122,14 @@ void tile_on_click(SDL_Event& event){
     }
 }
 
-void render() {
+Render_t render() {
     SDL_RenderClear(renderer);
 
-    // Render tiles based on the mapData array
     for(int i = 0; i < mapData.size(); ++i){
         for(int j = 0; j < mapData[i].size(); ++j){
             SDL_Rect tileRect = { j * LOCAL_TILE_SIZE, i * LOCAL_TILE_SIZE, LOCAL_TILE_SIZE, LOCAL_TILE_SIZE };
 
-            // Render the texture for the current tile type
+            /* Render the texture for the current tile type */
             SDL_RenderCopy(renderer, tileTextures[mapData[i][j]], NULL, &tileRect);
 
             SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);  // Reset color
@@ -139,16 +137,14 @@ void render() {
         }
     }
 
-    // Render area for the current selected tile
-    int currentTileAreaX = SCREEN_WIDTH - LOCAL_TILE_SIZE * 2;  // Adjust the X position as needed
-    int currentTileAreaY = LOCAL_TILE_SIZE;  // Adjust the Y position as needed
+    int currentTileAreaX = SCREEN_WIDTH - LOCAL_TILE_SIZE * 2;  
+    int currentTileAreaY = LOCAL_TILE_SIZE;
     int currentTileAreaSize = LOCAL_TILE_SIZE * 2;
 
     SDL_Rect currentTileAreaRect = {currentTileAreaX, currentTileAreaY, currentTileAreaSize, currentTileAreaSize};
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
     SDL_RenderFillRect(renderer, &currentTileAreaRect);
 
-    // Render the texture of the current selected tile in the area
     int currentTileTextureX = currentTileAreaX + LOCAL_TILE_SIZE / 2;
     int currentTileTextureY = currentTileAreaY + LOCAL_TILE_SIZE / 2;
 
@@ -161,7 +157,7 @@ void render() {
 int main(int argc, char** argv){
     init();
 
-    // Initialize mapData with zeros
+    /* INITIALISE MAP WITH 0 30x16 */
     int mapWidth = scrn_w / LOCAL_TILE_SIZE;
     int mapHeight = scrn_h / LOCAL_TILE_SIZE;
     mapData.resize(mapHeight, std::vector<int>(mapWidth, 0));

@@ -8,6 +8,7 @@
 #include "map_load.h"
 #include "item.h"
 #include "sound.h"
+#include "utils.h"
 
 #pragma endregion HEADERS
 
