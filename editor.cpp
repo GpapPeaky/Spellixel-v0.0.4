@@ -67,7 +67,7 @@ void init() {
 void tile_on_click(SDL_Event& event){
     if(event.type == SDL_QUIT){
         // Save the map and exit when the window is closed
-        std::ofstream file("output_map.txt");
+        std::ofstream file("output_map.mdf");
         file << mapData[0].size() << " " << mapData.size() << std::endl;
 
         for(const auto& row : mapData){
