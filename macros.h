@@ -27,7 +27,7 @@ extern int screen_y;
 #define X_S 30
 #define Y_S 16
 
-#define ROOMS 4 /* AMOUNT OF ROOMS */
+#define ROOMS 5 /* AMOUNT OF ROOMS */
 
 #pragma endregion MAP_LOADER
 
