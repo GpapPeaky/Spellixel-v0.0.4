@@ -10,7 +10,7 @@ extern Item podium;
 /**
  * @brief Initialises the podium
 */
-void init_podium();
+void init_podium(void);
 
 /**
  * @brief Spawns an item, initialiser
@@ -24,16 +24,16 @@ void spawn_item(int x, int y, std::string item_name);
 /**
  * @brief Checks for collisions between the player and the item rectangle
 */
-void item_player_collision();
+void item_player_collision(void);
 
 /**
  * @brief Renders the item on the player
 */
-void render_item_on_player();
+void render_item_on_player(void);
 
 /**
  * @brief Renders the item on the map
 */
-void render_item();
+void render_item(void);
 
 #endif /* Item */

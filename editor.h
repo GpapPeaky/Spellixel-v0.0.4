@@ -24,7 +24,7 @@ extern int currentTile;
 /**
  * @brief Initialises the editor window
 */
-void init();
+void init(void);
 
 /**
  * @brief Shows the next tile on click
@@ -36,6 +36,6 @@ void tile_on_click(SDL_Event& event); /* Update type */
 /**
  * @brief Renders the tile map
 */
-void render();
+void render(void);
 
 #endif /* EDITOR */

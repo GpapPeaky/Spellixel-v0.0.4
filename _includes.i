@@ -9,6 +9,7 @@
 #include "item.h"
 #include "sound.h"
 #include "utils.h"
+#include "font.h"
 
 #pragma endregion HEADERS
 

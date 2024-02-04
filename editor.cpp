@@ -12,7 +12,7 @@ int currentTile = 0;
 
 std::unordered_map<int, SDL_Texture*> tileTextures;
 
-Init_t init(){
+Init_t init(void){
 
     SDL_Init(SDL_INIT_VIDEO);
     IMG_Init(IMG_INIT_PNG);
@@ -122,7 +122,7 @@ Update_t tile_on_click(SDL_Event& event){
     }
 }
 
-Render_t render() {
+Render_t render(void) {
     SDL_RenderClear(renderer);
 
     for(int i = 0; i < mapData.size(); ++i){

@@ -35,9 +35,11 @@ MAIN_T main(int c, char** v){
     /*  TODO: ORGANISE ALL THE PRAGMAS INTO ONE FUNCTION EACH */
 
     load_sprite_init("Spellixel.pix"); /* Initialise a window, a renderer and some universal sprites */
+    init_ui();
     load_and_play_wav_music("cubic_forest");
 
    /* TODO: IMPLEMENT FUNCTION POINTERS WHEREVER YOU CAN FOR ENEMY FUNCTIONS */
+   /* TODO: IMPLEMENT FUNCTION POINTERS WHEREVER YOU CAN FOR ITEM FUNCTIONS */
 
     /*______________________________________________________________*/
 
@@ -56,12 +58,16 @@ MAIN_T main(int c, char** v){
     /* TODO: RANDOMISE ROOM GENERATION ( READ FROM THE MDF SEEDS ) */
     /* TODO: RANDOMISE ENEMY GENERATION */
 
+    /*______________________________________________________________*/
+
     // init_podium(); /* Podium texture, ect */
     // spawn_item(MID_X, MID_Y, "county_crown");
     // spawn_item(600, 600, "county_necklace");
     // spawn_item(400, 600, "county_gauntlets");
     // spawn_item(500, 600, "goggles_of_greenflake");
     // spawn_item(200, 600, "medal_of_bloodmoon");
+
+    /*______________________________________________________________*/
     
     SDL_Event e;
     bool not_running = RUNNING;
@@ -145,6 +151,8 @@ MAIN_T main(int c, char** v){
         render_enemy_bullets();
         render_item_on_player(); /* Works as intended */
 
+        render_ui("Nick Geuhrs"); /*  TEST: TFF */
+
         SDL_RenderPresent(renderer);
 
         #pragma endregion RENDERING
@@ -169,6 +177,8 @@ MAIN_T main(int c, char** v){
     }
 
     Mix_CloseAudio();
+    TTF_CloseFont(font);
+    TTF_Quit();
     SDL_FreeCursor(CURSOR);
     SDL_DestroyTexture(pltexture);
     SDL_DestroyRenderer(renderer);

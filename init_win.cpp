@@ -82,7 +82,7 @@ void load_sprite_init(const char* name){
 
     SDL_Init(SDL_INIT_AUDIO | SDL_INIT_VIDEO); /* Initialises the GUI library */
     IMG_Init(IMG_INIT_PNG);
-    if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) != 0) { fprintf(stderr, "Unable to initialize SDL: %s\n", SDL_GetError()); return; }
+    TTF_Init(); /* Initialise The Library */
 
    #pragma region AUDIO
 

@@ -7,7 +7,7 @@ Item podium;
 /* IDEA the item sprites will be saved onto a vector and they will be render over the character where each element is a different item and layer */
 /* IDEA another vector can have the item upgrades (dmg, rof ect) */
  
-void init_podium(){
+void init_podium(void){
     podium.name = "podium";
 
     podium.item_png = IMG_Load("src/sprites/items/podium.png");
@@ -53,7 +53,7 @@ void spawn_item(int x, int y, std::string item_name){
     SDL_RenderCopyF(renderer, item_to_spawn.item_texture, NULL, &item_to_spawn.item_pos);
 }
 
-void render_item(){
+void render_item(void){
     if(!current_item.collected){
         SDL_RenderCopyF(renderer, podium.item_texture, NULL, &podium.item_pos);
         SDL_RenderCopyF(renderer, current_item.item_texture, NULL, &current_item.item_pos);
@@ -63,7 +63,7 @@ void render_item(){
     }
 }
 
-void item_player_collision(){
+void item_player_collision(void){
     if(SDL_HasIntersectionF(&pl.pos, &current_item.item_pos) && !current_item.collected){
         items.push_back(current_item);
         // std::printf("You Have Gained The %s\n",current_item.name.c_str());
@@ -72,7 +72,7 @@ void item_player_collision(){
     }
 }
 
-void render_item_on_player(){
+void render_item_on_player(void){
     for(auto& item : items){
         SDL_RenderCopyF(renderer, item.item_texture, NULL, &pl.pos);
     }

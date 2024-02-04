@@ -22,8 +22,7 @@ void load_and_play_wav_music(std::string wav){
     Mix_ChannelFinished(channel_finished_callback); /* Safely frees the memory */
 
     // while(true){
-    //     Mix_PlayChannel(-1, sound, 0); /* BUG */
-    // }
+    //     Mix_PlayChannel(-1, sound, 0); /* Crashes */
 
     Mix_PlayChannel(-1, sound, 0); /* Currently, the theme is played once */
 
