@@ -11,8 +11,10 @@ extern SDL_Color text_colour_bg;
 extern SDL_Surface * text;
 extern SDL_Texture * txt;
 extern SDL_Texture * b_txt;
-extern SDL_Texture * c_txt;
 extern TTF_Font* font;
+extern SDL_FRect rect;
+extern SDL_FRect b_rect;
+extern SDL_FRect c_rect;
 
 /* TODO: CREATE A BASIC UI THAT WILL SHOW THE ROOM NUMBER, THE NUMBER OF ENEMIES AND THE STATS OF THE PLAYER */
 
