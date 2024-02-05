@@ -153,7 +153,7 @@ MAIN_T main(int c, char** v){
         // render_on_player("Nick Geuhrs");
         render_on_mouse_hover();
 
-        render_UI(); /* TEST: UI */
+        render_UI(); /* IDEA: REPAINT THE UI */
 
         SDL_RenderPresent(renderer);
 

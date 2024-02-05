@@ -1,6 +1,6 @@
 #include "map_load.h"
 
-/* TODO: MAKE THE ROOMS RANDOMLY GENERATE WITH EACH DOOR PASSED */
+/* TODO: MDF 5 */
 
 /* Always one up 1-TEXTURES */
 
