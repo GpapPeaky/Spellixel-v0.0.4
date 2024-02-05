@@ -7,6 +7,9 @@
 #include <chrono>
 #include <string>
 
+#ifndef ENEMY
+#define ENEMY
+
 typedef enum enemy_t{
     agressive, /* They attack */
     passive, /* They are standing */
@@ -181,6 +184,8 @@ void render_enemy_bullets(void);
 */
 void update_enemy(void);
 
+/* TODO: MAKE THE ENEMY BULLET ARRAY NOT CLEAR AFTER THE ENEMIES DEATH */
+
 /*
     TODO: Make a village guard
                 Make wolves
@@ -197,3 +202,5 @@ void update_enemy(void);
  * @param dt Timer
 */
 void enemy_updates(float dt);
+
+#endif /* ENEMY */

@@ -15,4 +15,9 @@ typedef void Render_t;
 typedef void Init_t;
 typedef int MAIN_T;
 
+/**
+ * @brief Debug message
+*/
+void dbg(void);
+
 #endif /* UTILS */

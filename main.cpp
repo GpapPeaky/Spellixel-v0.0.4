@@ -1,7 +1,5 @@
 #include "_includes.i"
 
-int current_map_idx =  1; /* Depending on the map index, a new type of biome should generate every 20 rooms */
-
 /*IDEA:  MOVE THIS FUCNTION SOMEWHERE ELSE */
 
 Update_t update_mesh_positions(void) {
@@ -35,6 +33,7 @@ MAIN_T main(int c, char** v){
     /*  TODO: ORGANISE ALL THE PRAGMAS INTO ONE FUNCTION EACH */
 
     load_sprite_init("Spellixel.pix"); /* Initialise a window, a renderer and some universal sprites */
+    init_font();
     init_ui();
     load_and_play_wav_music("cubic_forest");
 
@@ -45,7 +44,7 @@ MAIN_T main(int c, char** v){
 
     // chicken(400, 600);
     // chicken(600, 500);
-    // goblin(300 ,600);
+    goblin(300 ,600);
     // hilbert(MID_X + 75, MID_Y);
     // villager(600,500);
     // sheep(1250, 330);
@@ -151,7 +150,10 @@ MAIN_T main(int c, char** v){
         render_enemy_bullets();
         render_item_on_player(); /* Works as intended */
 
-        render_ui("Nick Geuhrs"); /*  TEST: TFF */
+        // render_on_player("Nick Geuhrs");
+        render_on_mouse_hover();
+
+        render_UI(); /* TEST: UI */
 
         SDL_RenderPresent(renderer);
 
@@ -191,5 +193,3 @@ MAIN_T main(int c, char** v){
 }
 
 /* TODO: PACK ALL RENDITIONS AND UPDATES INTO ONE OR AT MOST TWO FUNCTIONS */
-
-/* TODO: UI AT THE BOTTOM PIXELS */

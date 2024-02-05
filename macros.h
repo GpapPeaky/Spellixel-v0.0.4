@@ -69,4 +69,11 @@ extern int screen_y;
 #define VOLUME 20
 
 #pragma endregion SOUND
+
+#pragma region TTF
+
+#define FONT_SIZE 14
+
+#pragma endregion TTF
+
 /* Put here all general definitions like meshes arrays and bullet arrays, player Sprite types background Sprite type etc */

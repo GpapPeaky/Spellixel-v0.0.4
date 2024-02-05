@@ -6,6 +6,8 @@
 
 std::vector<struct tile> meshes;
 
+int current_map_idx = 1;
+
 std::vector<std::vector<int>> load_map(const std::string& filename){
     std::ifstream file(filename);
     if (!file.is_open()){

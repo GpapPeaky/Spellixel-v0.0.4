@@ -17,6 +17,7 @@ typedef struct tile{
 }Tiles;
 
 extern std::vector<struct tile> meshes;
+extern int current_map_idx;
 
 #endif
 

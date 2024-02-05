@@ -7,8 +7,6 @@
 #ifndef MESH
 #define MESH
 
-extern int currentMapIndex;
-
 /**
  * @brief Check collisions between the BULLETS and the meshes
  * 
