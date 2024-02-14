@@ -73,6 +73,7 @@ Sprite fence;
 
 /*___________________________________________________________________________________________*/
 
+/* TODO: CONFIGURE THE BACKGROUND SIZE PROBLEM (test on laptop) */
 
 void load_sprite_init(const char* name){
 

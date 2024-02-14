@@ -35,7 +35,7 @@ MAIN_T main(int c, char** v){
     load_sprite_init("Spellixel.pix"); /* Initialise a window, a renderer and some universal sprites */
     init_font();
     init_ui();
-    load_and_play_wav_music("cubic_forest");
+    // load_and_play_wav_music("cubic_forest");
 
    /* TODO: IMPLEMENT FUNCTION POINTERS WHEREVER YOU CAN FOR ENEMY FUNCTIONS */
    /* TODO: IMPLEMENT FUNCTION POINTERS WHEREVER YOU CAN FOR ITEM FUNCTIONS */
@@ -44,7 +44,7 @@ MAIN_T main(int c, char** v){
 
     // chicken(400, 600);
     // chicken(600, 500);
-    goblin(300 ,600);
+    goblin(200 ,600);
     // hilbert(MID_X + 75, MID_Y);
     // villager(600,500);
     // sheep(1250, 330);
