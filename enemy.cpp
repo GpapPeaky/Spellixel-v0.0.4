@@ -140,13 +140,14 @@ void update_enemy_bullets(float deltaTime){
         }
 
         enemy.sprite.sprite_bullets.erase(std::remove_if(enemy.sprite.sprite_bullets.begin(), enemy.sprite.sprite_bullets.end(),
-                                                         [&](const Bullet &bullet)
-                                                         {
+                                                        [&](const Bullet &bullet)
+                                                        {
                                                             return bullet_hits_player(bullet) || bullet_offscreen(bullet) || bullet_hits_mesh(bullet);
-                                                         }),
-                                          enemy.sprite.sprite_bullets.end());
+                                                        }), enemy.sprite.sprite_bullets.end());
     }
 }
+
+/* FIXME: WHENEVER AN ENEMY DIES IT IS REMOVED FROM THE ENEMY VECTOR, THAT MEANS THAT THE FUNCTION DOES NOT HAVE ACCESS TO THE REMAINING BULLETS LAODED */
 
 void render_enemy_bullets(void){
     for (auto &enemy : enemies){
