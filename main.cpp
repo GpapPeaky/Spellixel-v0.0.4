@@ -34,6 +34,7 @@ MAIN_T main(int c, char** v){
 
     load_sprite_init("Spellixel.pix"); /* Initialise a window, a renderer and some universal sprites */
     init_font();
+    init_enemy_font();
     init_ui();
     // load_and_play_wav_music("cubic_forest");
 

@@ -1,6 +1,8 @@
 #include "init_win.h"
 #include "macros.h"
 #include "mesh.h"
+#include "utils.h"
+#include <SDL2/SDL_ttf.h>
 #include <time.h>
 #include <cmath>
 #include <algorithm>
@@ -9,6 +11,16 @@
 
 #ifndef ENEMY
 #define ENEMY
+
+extern SDL_Color e_text_colour;
+extern SDL_Color e_text_colour_bg;
+extern SDL_Surface * e_text;
+extern SDL_Texture * e_txt;
+extern SDL_Texture * e_b_txt;
+extern TTF_Font* e_font;
+extern SDL_FRect e_rect;
+extern SDL_FRect e_b_rect;
+extern SDL_FRect e_c_rect;
 
 typedef enum enemy_t{
     agressive, /* They attack */
@@ -37,9 +49,23 @@ typedef struct Enemy{
     float speed;
     std::string name;
     enemy_t type;
+    bool damaged;
+    int damage_taken;
 }Enemy;
 
 extern std::vector<Enemy> enemies;
+
+/**
+ * @brief Init enemy font
+*/
+Init_t init_enemy_font(void);
+/**
+ * @brief Renders The damage taken by an enemy
+ * 
+ * @param dmg_taken Damage taken
+ * @param position Position of text
+*/
+Render_t render_damaged_enemies(int dmg_taken, SDL_FRect* position);
 
 /**
  * @brief Creates a chicken enemy
