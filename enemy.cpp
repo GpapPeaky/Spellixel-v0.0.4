@@ -120,6 +120,8 @@ bool bullet_hits_mesh(const Bullet &bullet){
     return false;
 }
 
+/* TEST: TEST */
+
 bool bullet_hits_player(const Bullet &bullet){
     if(SDL_HasIntersectionF(&bullet.bullet_pos, &pl.pos)){
         pl.HP -= bullet.dmg;
