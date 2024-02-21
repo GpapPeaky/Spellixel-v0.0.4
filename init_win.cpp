@@ -73,11 +73,9 @@ Sprite fence;
 
 /*___________________________________________________________________________________________*/
 
-/* TODO: CONFIGURE THE BACKGROUND SIZE PROBLEM (test on laptop) */
+/* TODO: CONFIGURE THE BACKGROUND SIZE PROBLEM (test on laptop) NATIVE_SIZE -> NEWWINDOWSIZE*/
 
 void load_sprite_init(const char* name){
-
-    #pragma region INIT
 
     srand(time(NULL)); /* Initialise once */
 
@@ -85,26 +83,22 @@ void load_sprite_init(const char* name){
     IMG_Init(IMG_INIT_PNG);
     TTF_Init(); /* Initialise The Library */
 
-   #pragma region AUDIO
+    int audio_rate = 22050;
+    Uint16 audio_format = AUDIO_S16SYS;
+    int audio_channels = 2;
+    int audio_buffers = 1000;
 
-        int audio_rate = 22050;
-        Uint16 audio_format = AUDIO_S16SYS;
-        int audio_channels = 2;
-        int audio_buffers = 1000;
+    /*  Initialise the mixer */
+    Mix_OpenAudio(audio_rate, audio_format, audio_channels, audio_buffers);
 
-        /*  Initialise the mixer */
-        Mix_OpenAudio(audio_rate, audio_format, audio_channels, audio_buffers);
+    /*___________________________________________________________________________________________*/
 
-        /*___________________________________________________________________________________________*/
+    SDL_Surface* icon = IMG_Load("src/sprites/icon.png");
 
-        SDL_Surface* icon = IMG_Load("src/sprites/icon.png");
-
-        win = SDL_CreateWindow(name,0,0,SCREEN_HEIGHT,SCREEN_WIDTH,SDL_WINDOW_FULLSCREEN_DESKTOP | SDL_WINDOW_OPENGL); /* Create A Window */
-        renderer = SDL_CreateRenderer(win,-1,SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC); /* Sprite Rendering */
-        SDL_GetWindowSize(win, &screen_x, &screen_y);
-        SDL_SetWindowIcon(win, icon);
-
-    #pragma endregion AUDIO
+    win = SDL_CreateWindow(name,0,0,SCREEN_HEIGHT,SCREEN_WIDTH,SDL_WINDOW_FULLSCREEN_DESKTOP | SDL_WINDOW_OPENGL); /* Create A Window */
+    renderer = SDL_CreateRenderer(win,-1,SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC); /* Sprite Rendering */
+    SDL_GetWindowSize(win, &screen_x, &screen_y);
+    SDL_SetWindowIcon(win, icon);
 
     pl.sprite_bmp = IMG_Load("src/sprites/pitt.png"); /* PLAYER TEXTURE */
 
@@ -120,10 +114,6 @@ void load_sprite_init(const char* name){
     pltexture = SDL_CreateTextureFromSurface(renderer,pl.sprite_bmp);
     SDL_FreeSurface(pl.sprite_bmp);
 
-    #pragma endregion INIT
-
-    #pragma region CURSOR
-
     Sprite cursor; /* Load it as a sprite (Surface will be deleted later) */
 
     cursor.sprite_bmp = IMG_Load("src/sprites/cursor.png"); /* It show the actual size of the image */                                      
@@ -135,8 +125,6 @@ void load_sprite_init(const char* name){
     SDL_ShowCursor(SDL_ENABLE);                                                                     
 
     SDL_FreeSurface(cursor.sprite_bmp);
-
-    #pragma endregion CURSOR
 
     SDL_RenderClear(renderer);
 }

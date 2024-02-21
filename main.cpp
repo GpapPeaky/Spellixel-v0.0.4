@@ -76,8 +76,6 @@ MAIN_T main(int c, char** v){
 
         /* Different maps at each next room */
 
-        #pragma region MAPPING
-
         std::string map_path = "maps/map" + std::to_string(current_map_idx) +  ".mdf";
         std::string mesh_path = "maps/mesh" +  std::to_string(current_map_idx) +  ".mdf";
 
@@ -95,8 +93,6 @@ MAIN_T main(int c, char** v){
 
         float deltaTime = elapsed.count();
 
-        #pragma endregion DELTATIME
-
         while(SDL_PollEvent(&e) != 0){
             if(e.type == SDL_QUIT){
                 not_running = NOT_RUNNING;
@@ -106,8 +102,6 @@ MAIN_T main(int c, char** v){
             /* Handling Mouse */
             handle_shooting(e);
         }
-
-        #pragma region COLLISIONS
 
         mesh_player_collision();
         mesh_bullet_collision(pl.sprite_bullets);
@@ -121,15 +115,11 @@ MAIN_T main(int c, char** v){
         CRASHES THE PROGRAM, MODIFYING THE ARRAY WHILE ITERATING IT -> UPRECEDENTED BEHAVIOUR
         */
 
-        #pragma endregion COLLISIONS
-
         update_player(deltaTime);
         update_mesh_positions();
         enemy_updates(deltaTime);
 
         shoot(0.1f); /* Update? ...maybe? */
-
-        #pragma region RENDERING
 
         SDL_RenderClear(renderer); /* Clears the rendition, before re-rednering the screen */
         
@@ -157,13 +147,9 @@ MAIN_T main(int c, char** v){
         render_UI(); /* IDEA: REPAINT THE UI */
 
         SDL_RenderPresent(renderer);
-
-        #pragma endregion RENDERING
     }
 
     /* No input can be taken through the console until the window has been destroyed */
-
-    #pragma region DESTROY
 
     SDL_Delay(100); /* Lower CPU overload */
 
@@ -187,8 +173,6 @@ MAIN_T main(int c, char** v){
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(win);
     SDL_Quit();
-
-    #pragma endregion DESTROY
 
     return EXIT_SUCCESS;
 }
