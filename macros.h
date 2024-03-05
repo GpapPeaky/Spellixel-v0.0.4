@@ -10,17 +10,11 @@ extern int screen_y;
 
 #endif
 
-#pragma region SCREEN
-
 #define SCREEN_WIDTH 1920
 #define SCREEN_HEIGHT 1080
 
 #define MID_X SCREEN_WIDTH/2
 #define MID_Y SCREEN_HEIGHT/2
-
-#pragma endregion SCREEN
-
-#pragma region  MAP_LOADER
 
 #define TEXTURES 31 /* +1 The actual amount of textures excluding tile (0) ( or the last texture idx ) */
 
@@ -29,18 +23,12 @@ extern int screen_y;
 
 #define ROOMS 5 /* AMOUNT OF ROOMS */
 
-#pragma endregion MAP_LOADER
-
-#pragma region PLAYER
-
 #define __BULLET_SPEED__  700.0f
 #define __SPEED_UP__ 70.0f
 #define __SLOW_DOWN__ 0.8f
 #define PLAYER_SIZE_X 60
 #define PLAYER_SIZE_Y 60
 #define SHOOTING_RATE 201 /* IDEA: Add as a field to the player sprite struct */
-
-#pragma endregion PLAYER
 
 #define RUNNING 0
 #define NOT_RUNNING 1
@@ -64,16 +52,8 @@ extern int screen_y;
 
 /* Sound */
 
-#pragma region SOUND
-
 #define VOLUME 20
 
-#pragma endregion SOUND
-
-#pragma region TTF
-
 #define FONT_SIZE 14
-
-#pragma endregion TTF
 
 /* Put here all general definitions like meshes arrays and bullet arrays, player Sprite types background Sprite type etc */

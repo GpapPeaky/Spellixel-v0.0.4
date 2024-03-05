@@ -30,8 +30,6 @@ Update_t update_mesh_positions(void) {
 
 MAIN_T main(int c, char** v){
 
-    /*  TODO: ORGANISE ALL THE PRAGMAS INTO ONE FUNCTION EACH */
-
     load_sprite_init("Spellixel.pix"); /* Initialise a window, a renderer and some universal sprites */
     init_font();
     init_enemy_font();
@@ -81,10 +79,6 @@ MAIN_T main(int c, char** v){
 
         std::vector<std::vector<int>> background = load_map(map_path);
         std::vector<std::vector<int>> mesh_map = load_map(mesh_path);
-
-        #pragma endregion MAPPING
-
-        #pragma region DELTATIME
 
         auto currentTime = std::chrono::high_resolution_clock::now();
         static auto prevTime = currentTime;
