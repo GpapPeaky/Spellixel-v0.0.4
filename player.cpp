@@ -78,4 +78,5 @@ void update_player(float deltaTime){
 
 void render_player(void){
     SDL_RenderCopyF(renderer, pltexture, NULL, &pl.pos); /* Player */
+    /* TODO: ADD BASIC SHADOWS */
 }
