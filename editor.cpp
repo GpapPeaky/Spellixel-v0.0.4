@@ -1,5 +1,7 @@
 #include "editor.h"
 
+/* IDEA: LOAD MDF FILES FOR EDITING */
+
 const int LOCAL_TILE_SIZE = 32;
 const int scrn_w = 1180;
 const int scrn_h = 512;
