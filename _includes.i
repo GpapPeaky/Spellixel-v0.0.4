@@ -1,10 +1,6 @@
 /**
  * @author Gpap Peaky - George/Giorgos Papamatthaiakis
- * 
- * @headerfile TRUE
- * 
 */
-#pragma region HEADERS
 
 #include "weapon.h"
 #include "player.h"
@@ -17,7 +13,5 @@
 #include "utils.h"
 #include "font.h"
 #include "ui.h"
-
-#pragma endregion HEADERS
 
 /* Headers for the main function */
