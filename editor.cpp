@@ -1,6 +1,8 @@
 #include "editor.h"
 
 /* IDEA: LOAD MDF FILES FOR EDITING */
+/* MUST: CONFIGURE MAKE FILE, AND SOURCE CODE */
+/* MUST: CROSS DEVICE EDITOR / REMOVE REGEX */
 
 const int LOCAL_TILE_SIZE = 32;
 const int scrn_w = 1180;
