@@ -38,7 +38,7 @@ Render_t render_player_stats(void){
 
     render_text(("HP: " + std::to_string(pl.HP)).c_str(), &HP_rect);
     render_text(("ATT: " + std::to_string(pl.Bullets.dmg)).c_str(), &att_rect);
-    render_text(("ROOM: " + std::to_string(current_map_idx)).c_str(), &room_rect);
+    render_text(("ROOM: " + std::to_string(total_rooms_count)).c_str(), &room_rect);
 
     /* More stats will be added in the future */
 }

@@ -20,12 +20,15 @@ Update_t update_mesh_positions(void) {
         }
 
         std::printf("Currenty at map <%d>\n",current_map_idx);
+        total_rooms_count++;
 
         pl.pos.x = 0 - pl.pos.w; /* Resetting position as we move along to a new map */
     }
 
     prev_pl_x = pl.pos.x;
     prev_pl_y = pl.pos.y;
+
+    return;
 }
 
 MAIN_T main(int c, char** v){

@@ -1,12 +1,12 @@
 #include "map_load.h"
 
-/* TODO: MDF 5 */
-
 /* Always one up 1-TEXTURES */
 
 std::vector<struct tile> meshes;
 
 int current_map_idx = 1;
+
+int total_rooms_count = 0;
 
 std::vector<std::vector<int>> load_map(const std::string& filename){
     std::ifstream file(filename);

@@ -18,6 +18,7 @@ typedef struct tile{
 
 extern std::vector<struct tile> meshes;
 extern int current_map_idx;
+extern int total_rooms_count;
 
 #endif
 
