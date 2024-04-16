@@ -5,6 +5,7 @@ Item current_item;
 Item podium;
 
 /* IDEA the item sprites will be saved onto a vector and they will be render over the character where each element is a different item and layer */
+/* IDEA the items can be displaye by pressing a key */
 /* IDEA another vector can have the item upgrades (dmg, rof ect) */
  
 void init_podium(void){

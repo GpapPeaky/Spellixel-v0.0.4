@@ -1,6 +1,7 @@
 #include "player.h"
 
 std::unordered_set<SDL_Keycode> activeKeys;
+SDL_FRect shadow_rect;
 
 void handle_input(SDL_Event& e){
     if(e.type == SDL_KEYDOWN || e.type == SDL_KEYUP){
@@ -76,7 +77,7 @@ void update_player(float deltaTime){
     update_bullets(deltaTime);
 }
 
-void render_player(void){
+Render_t render_player(void){
+    draw_sprite_shadow(pl, 0);
     SDL_RenderCopyF(renderer, pltexture, NULL, &pl.pos); /* Player */
-    /* TODO: ADD BASIC SHADOWS */
 }

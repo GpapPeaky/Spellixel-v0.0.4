@@ -54,6 +54,13 @@ extern int screen_y;
 
 #define VOLUME 20
 
+/* Font */
+
 #define FONT_SIZE 14
+#define DAMAGE_DISPLAY_DURATION 1500
+
+/* FX */
+
+#define SHADOW_OPACITY 110
 
 /* Put here all general definitions like meshes arrays and bullet arrays, player Sprite types background Sprite type etc */

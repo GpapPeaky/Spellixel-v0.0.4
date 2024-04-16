@@ -2,6 +2,7 @@
 #include "macros.h"
 #include "mesh.h"
 #include "utils.h"
+#include "fx.h"
 #include <SDL2/SDL_ttf.h>
 #include <time.h>
 #include <cmath>

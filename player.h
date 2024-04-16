@@ -1,5 +1,7 @@
 #include <SDL2/SDL.h>
 #include <unordered_set>
+#include "fx.h"
+#include "utils.h"
 #include "weapon.h"
 #include "macros.h"
 

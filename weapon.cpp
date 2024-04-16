@@ -59,6 +59,7 @@ void update_bullets(float deltaTime){
 
 void render_player_bullets(void){
         for (const auto& bullet :pl.sprite_bullets){
+            draw_bullet_shadow(bullet);
             SDL_RenderCopyExF(renderer, bullet.bullet_texture, NULL, &bullet.bullet_pos, (bullet.bullet_angle) * (180.0 / M_PI) , NULL, SDL_FLIP_NONE);
         }
 
