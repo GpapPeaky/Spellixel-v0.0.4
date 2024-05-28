@@ -4,66 +4,58 @@
 /* MUST: CONFIGURE MAKE FILE, AND SOURCE CODE */
 /* MUST: CROSS DEVICE EDITOR / REMOVE REGEX */
 
-const int LOCAL_TILE_SIZE = 32;
-const int scrn_w = 1180;
-const int scrn_h = 512;
-
 SDL_Window* window;
 SDL_Renderer* renderer;
-
-std::vector<std::vector<int>> mapData;
-int currentTile = 0;
-
-std::unordered_map<int, SDL_Texture*> tileTextures;
+std::vector<std::vector<int>> map_data;
+int current_tile = 0;
+std::unordered_map<int, SDL_Texture*> tile_textures;
 
 Init_t init(void){
 
     SDL_Init(SDL_INIT_VIDEO);
     IMG_Init(IMG_INIT_PNG);
-    window = SDL_CreateWindow("Map Editor", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, scrn_w, scrn_h, SDL_WINDOW_SHOWN);
+    window = SDL_CreateWindow("Map Editor", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, EDITOR_SCRN_W, EDITOR_SCRN_H, SDL_WINDOW_SHOWN);
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 
-    // Load textures for tiles from a directory
-    std::string tileDirectory = "src/sprites/tiles";  // Adjust the directory based on your setup
+    std::string tile_dir = "src/sprites/tiles";
     DIR* dir;
     struct dirent* ent;
-    if((dir = opendir(tileDirectory.c_str())) != NULL){
-        while ((ent = readdir(dir)) != NULL) {
-            if (ent->d_type == DT_REG) {
-                std::string tileFileName = ent->d_name;
+    if((dir = opendir(tile_dir.c_str())) != NULL){
+        while((ent = readdir(dir)) != NULL){
+            if(ent->d_type == DT_REG){
+                std::string tile_fname = ent->d_name;
                 
-                // Use regular expressions to extract the tile number
-                std::regex numberRegex("\\((\\d+)\\)");
+                std::regex num_regex("\\((\\d+)\\)");
                 std::smatch match;
 
-                if(std::regex_search(tileFileName, match, numberRegex)){
-                    int tileNumber = std::stoi(match[1].str());
+                if(std::regex_search(tile_fname, match, num_regex)){
+                    int tile_id = std::stoi(match[1].str());
 
-                    std::string tileImagePath = tileDirectory + "/" + tileFileName;
-                    SDL_Surface* tileSurface = IMG_Load(tileImagePath.c_str());
+                    std::string tile_img_path = tile_dir + "/" + tile_fname;
+                    SDL_Surface* tile_surface = IMG_Load(tile_img_path.c_str());
 
-                    if(tileSurface == NULL){
-                        std::cerr << "Unable to load image: " << tileImagePath << "! IMG_Load Error: " << IMG_GetError() << std::endl;
+                    if(tile_surface == NULL){
+                        std::cerr << "Unable to load image: " << tile_img_path << "! IMG_Load Error: " << IMG_GetError() << std::endl;
                         exit(1);
                     }
 
-                    SDL_Texture* tileTexture = SDL_CreateTextureFromSurface(renderer, tileSurface);
-                    SDL_FreeSurface(tileSurface);
+                    SDL_Texture* tile_texture = SDL_CreateTextureFromSurface(renderer, tile_surface);
+                    SDL_FreeSurface(tile_surface);
 
-                    if(tileTexture == NULL){
-                        std::cerr << "Unable to create texture from image: " << tileImagePath << "! SDL_Error: " << SDL_GetError() << std::endl;
+                    if(tile_texture == NULL){
+                        std::cerr << "Unable to create texture from image: " << tile_img_path << "! SDL_Error: " << SDL_GetError() << std::endl;
                         exit(1);
                     }
 
-                    tileTextures[tileNumber] = tileTexture;
+                    tile_textures[tile_id] = tile_texture;
                 }
             }
         }
         closedir(dir);
     }else{
-        std::cerr << "Could not open directory: " << tileDirectory << std::endl;
+        std::cerr << "Could not open directory: " << tile_dir << std::endl;
         exit(1);
     }
 }
@@ -71,9 +63,9 @@ Init_t init(void){
 Update_t tile_on_click(SDL_Event& event){
     if(event.type == SDL_QUIT){
         std::ofstream file("_FILE.mdf");
-        file << mapData[0].size() << " " << mapData.size() << std::endl;
+        file << map_data[0].size() << " " << map_data.size() << std::endl;
 
-        for(const auto& row : mapData){
+        for(const auto& row : map_data){
             for(int value : row){
                 file << value << " ";
             }
@@ -84,19 +76,19 @@ Update_t tile_on_click(SDL_Event& event){
 
         exit(0);
     }else if(event.type == SDL_MOUSEBUTTONDOWN){
-        int mouseX = event.button.x / LOCAL_TILE_SIZE;
-        int mouseY = event.button.y / LOCAL_TILE_SIZE;
+        int mouse_x = event.button.x / LOCAL_TILE_SIZE;
+        int mouse_y = event.button.y / LOCAL_TILE_SIZE;
 
-        if (mouseY >= 0 && mouseY < mapData.size() && mouseX >= 0 && mouseX < mapData[0].size()) {
-            mapData[mouseY][mouseX] = currentTile;
+        if (mouse_y >= 0 && mouse_y < map_data.size() && mouse_x >= 0 && mouse_x < map_data[0].size()) {
+            map_data[mouse_y][mouse_x] = current_tile;
         }
     }else if (event.type == SDL_KEYDOWN){
         switch (event.key.keysym.sym){
             case SDLK_ESCAPE: {
-                std::ofstream file("_FILE.mdf"); /* Save the map whenever I exit */
-                file << mapData[0].size() << " " << mapData.size() << std::endl;
+                std::ofstream file("map.mdf"); /* Save the map whenever I exit */
+                file << map_data[0].size() << " " << map_data.size() << std::endl;
 
-                for(const auto& row : mapData){
+                for(const auto& row : map_data){
                     for (int value : row){
                         file << value << " ";
                     }
@@ -108,16 +100,16 @@ Update_t tile_on_click(SDL_Event& event){
                 exit(0);
             }
             case SDLK_e: {
-                currentTile = (currentTile + 1);
-                if(currentTile == TEXTURES){
-                    currentTile == 1;
+                current_tile = (current_tile + 1);
+                if(current_tile == TEXTURES){
+                    current_tile == 1;
                 }
                 break;
             }
             case SDLK_q: {
-                currentTile = (currentTile - 1);
-                if(currentTile < 0){
-                    currentTile == TEXTURES;
+                current_tile = (current_tile - 1);
+                if(current_tile < 0){
+                    current_tile == TEXTURES;
                 }
                 break;
             }
@@ -128,31 +120,31 @@ Update_t tile_on_click(SDL_Event& event){
 Render_t render(void) {
     SDL_RenderClear(renderer);
 
-    for(int i = 0; i < mapData.size(); ++i){
-        for(int j = 0; j < mapData[i].size(); ++j){
-            SDL_Rect tileRect = { j * LOCAL_TILE_SIZE, i * LOCAL_TILE_SIZE, LOCAL_TILE_SIZE, LOCAL_TILE_SIZE };
+    for(int i = 0; i < map_data.size(); ++i){
+        for(int j = 0; j < map_data[i].size(); ++j){
+            SDL_Rect tile_rect = { j * LOCAL_TILE_SIZE, i * LOCAL_TILE_SIZE, LOCAL_TILE_SIZE, LOCAL_TILE_SIZE };
 
             /* Render the texture for the current tile type */
-            SDL_RenderCopy(renderer, tileTextures[mapData[i][j]], NULL, &tileRect);
+            SDL_RenderCopy(renderer, tile_textures[map_data[i][j]], NULL, &tile_rect);
 
             SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255); 
-            SDL_RenderDrawRect(renderer, &tileRect);
+            SDL_RenderDrawRect(renderer, &tile_rect);
         }
     }
 
-    int currentTileAreaX = 1080; 
-    int currentTileAreaY = scrn_h/2; 
-    int currentTileAreaSize = LOCAL_TILE_SIZE * 2;
+    int current_tile_area_x = 1080; 
+    int current_tile_area_y = EDITOR_SCRN_H/2; 
+    int current_tile_area_size = LOCAL_TILE_SIZE * 2;
 
-    SDL_Rect currentTileAreaRect = {currentTileAreaX, currentTileAreaY, currentTileAreaSize, currentTileAreaSize};
+    SDL_Rect current_tileAreaRect = {current_tile_area_x, current_tile_area_y, current_tile_area_size, current_tile_area_size};
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-    SDL_RenderFillRect(renderer, &currentTileAreaRect);
+    SDL_RenderFillRect(renderer, &current_tileAreaRect);
 
-    int currentTileTextureX = ( currentTileAreaX + LOCAL_TILE_SIZE / 2 ) - 105;
-    int currentTileTextureY = scrn_h / 2 - currentTileAreaSize / 2 - 15;
+    int current_tile_texture_x = ( current_tile_area_x + LOCAL_TILE_SIZE / 2 ) - 105;
+    int current_tile_texture_y = EDITOR_SCRN_H / 2 - current_tile_area_size / 2 - 15;
 
-    SDL_Rect currentTileTextureRect = {currentTileTextureX, currentTileTextureY, 5 * LOCAL_TILE_SIZE, 5 * LOCAL_TILE_SIZE};
-    SDL_RenderCopy(renderer, tileTextures[currentTile], NULL, &currentTileTextureRect);
+    SDL_Rect current_tile_texture_rect = {current_tile_texture_x, current_tile_texture_y, 5 * LOCAL_TILE_SIZE, 5 * LOCAL_TILE_SIZE};
+    SDL_RenderCopy(renderer, tile_textures[current_tile], NULL, &current_tile_texture_rect);
 
 
     SDL_RenderPresent(renderer);
@@ -162,9 +154,9 @@ int main(int argc, char** argv){
     init();
 
     /* INITIALISE MAP WITH 0 30x16 */
-    int mapWidth = 960 / LOCAL_TILE_SIZE;
-    int mapHeight = scrn_h / LOCAL_TILE_SIZE;
-    mapData.resize(mapHeight, std::vector<int>(mapWidth, 0));
+    int map_w = 960 / LOCAL_TILE_SIZE;
+    int map_h = EDITOR_SCRN_H / LOCAL_TILE_SIZE;
+    map_data.resize(map_h, std::vector<int>(map_w, 0));
 
     SDL_Event e;
 

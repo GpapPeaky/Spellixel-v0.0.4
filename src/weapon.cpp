@@ -35,7 +35,7 @@ void handle_shooting(SDL_Event& e){
     }
 }
 
-void update_bullets(float deltaTime){
+Update_t update_bullets(float deltaTime){
 
     for(auto& bullet : pl.sprite_bullets){
         bullet.bullet_pos.x += bullet.bullet_acc.velocity_x * deltaTime;
@@ -57,7 +57,7 @@ void update_bullets(float deltaTime){
     pl.sprite_bullets.erase(newEnd, pl.sprite_bullets.end());
 }
 
-void render_player_bullets(void){
+Render_t render_player_bullets(void){
         for (const auto& bullet :pl.sprite_bullets){
             draw_bullet_shadow(bullet);
             SDL_RenderCopyExF(renderer, bullet.bullet_texture, NULL, &bullet.bullet_pos, (bullet.bullet_angle) * (180.0 / M_PI) , NULL, SDL_FLIP_NONE);

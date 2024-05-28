@@ -1,5 +1,5 @@
 #include "init_win.h"
-#include "macros.h"
+#include "def.aux"
 #include "mesh.h"
 #include "utils.h"
 #include "fx.h"
@@ -15,9 +15,9 @@
 
 extern SDL_Color e_text_colour;
 extern SDL_Color e_text_colour_bg;
-extern SDL_Surface * e_text;
-extern SDL_Texture * e_txt;
-extern SDL_Texture * e_b_txt;
+extern SDL_Surface* e_text;
+extern SDL_Texture* e_txt;
+extern SDL_Texture* e_b_txt;
 extern TTF_Font* e_font;
 extern SDL_FRect e_rect;
 extern SDL_FRect e_b_rect;

@@ -1,4 +1,5 @@
 #include "init_win.h"
+#include "utils.h"
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <vector>
@@ -41,7 +42,7 @@ std::vector<std::vector<int>> load_map(const std::string& filename);
  * 
  * @note WHENEVER A NEW TEXTURE IS ADDED, THE AMOUNT OF TEXTURES ALLOCATED IN THE TEXTURES ARRAY HAS TO BE INCREMENTED
 */
-void render_background_tiles(std::vector<std::vector<int>>& map );
+Render_t render_background_tiles(std::vector<std::vector<int>>& map);
 
 /**
  * @brief Renders the background tiles (collisions)
@@ -50,4 +51,9 @@ void render_background_tiles(std::vector<std::vector<int>>& map );
  * 
  * @note WHENEVER A NEW TEXTURE IS ADDED, THE AMOUNT OF TILES ALLOCATED IN THE TILES ARRAY HAS TO BE INCREMENTED
 */
-void render_mesh_tiles(std::vector<std::vector<int>>& map );
+Render_t render_mesh_tiles(std::vector<std::vector<int>>& map);
+
+/**
+ * @brief Updates the loaded map
+*/
+Update_t update_mesh_positions(void);

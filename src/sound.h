@@ -2,7 +2,7 @@
 #include <SDL2/SDL.h>
 #include <string>
 #include "init_win.h"
-#include "macros.h"
+#include "def.aux"
 
 #ifndef SOUND
 #define SOUND

@@ -17,7 +17,7 @@ Init_t init_font(void){
         std:printf("FONT: %s\n ", SDL_GetError());
     }
     text_colour = { 255, 255, 255}; /* White font */
-    text_colour_bg = { 0, 0, 0}; /* White font */
+    text_colour_bg = { 0, 0, 0 }; /* White font */
 
     return;
 }

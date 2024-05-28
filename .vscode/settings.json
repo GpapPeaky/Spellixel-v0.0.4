@@ -49,6 +49,8 @@
         "bitset": "cpp",
         "cstring": "cpp",
         "map": "cpp",
-        "regex": "cpp"
+        "regex": "cpp",
+        "*.aux": "c",
+        "_includes.i": "cpp"
     }
 }

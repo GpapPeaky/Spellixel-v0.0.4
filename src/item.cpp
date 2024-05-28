@@ -8,7 +8,7 @@ Item podium;
 /* IDEA the items can be displaye by pressing a key */
 /* IDEA another vector can have the item upgrades (dmg, rof ect) */
  
-void init_podium(void){
+Init_t init_podium(void){
     podium.name = "podium";
 
     podium.item_png = IMG_Load("src/sprites/items/podium.png");
@@ -24,7 +24,8 @@ void init_podium(void){
     podium.item_pos.h = podium.item_png->h * 4;
 }
 
-void spawn_item(int x, int y, std::string item_name){
+Update_t spawn_item(int x, int y, std::string item_name){
+
     Item item_to_spawn;
     std::string filename = ("src/sprites/items/" + item_name +  ".png");
     item_to_spawn.name = item_name;
@@ -54,7 +55,7 @@ void spawn_item(int x, int y, std::string item_name){
     SDL_RenderCopyF(renderer, item_to_spawn.item_texture, NULL, &item_to_spawn.item_pos);
 }
 
-void render_item(void){
+Render_t render_item(void){
     if(!current_item.collected){
         SDL_RenderCopyF(renderer, podium.item_texture, NULL, &podium.item_pos);
         SDL_RenderCopyF(renderer, current_item.item_texture, NULL, &current_item.item_pos);

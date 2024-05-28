@@ -30,7 +30,7 @@ std::vector<std::vector<int>> load_map(const std::string& filename){
     return map;
 }
 
-void render_background_tiles(std::vector<std::vector<int>>& map){
+Render_t render_background_tiles(std::vector<std::vector<int>>& map){
     SDL_Texture* textures[TEXTURES];
 
     for(int i = 1 ; i < TEXTURES ; i++){
@@ -55,7 +55,7 @@ void render_background_tiles(std::vector<std::vector<int>>& map){
     }
 }
 
-void render_mesh_tiles(std::vector<std::vector<int>>& map ){
+Render_t render_mesh_tiles(std::vector<std::vector<int>>& map ){
     Tiles textures[TEXTURES];
     meshes.clear();
 
@@ -83,4 +83,33 @@ void render_mesh_tiles(std::vector<std::vector<int>>& map ){
     for (int i = 0; i < TEXTURES; ++i) {
         SDL_DestroyTexture(textures[i].sprite_texture);
     }
+}
+
+Update_t update_mesh_positions(void){
+
+    srand(time(NULL));
+
+    static int prev_pl_x = pl.pos.x;
+    static int prev_pl_y = pl.pos.y;
+
+    int deltaX = pl.pos.x - prev_pl_x;
+    int deltaY = pl.pos.y - prev_pl_y;
+
+    if (pl.pos.x + pl.pos.w >= screen_x) {
+        current_map_idx = 1 + (rand() % ROOMS);
+
+        while(current_map_idx == 1){ /* IDX 1 IS THE STARTING POSITION */
+            current_map_idx = 1 + (rand() % ROOMS);
+        }
+
+        std::printf("Currenty at map <%d>\n",current_map_idx);
+        total_rooms_count++;
+
+        pl.pos.x = 0 - pl.pos.w; /* Resetting position as we move along to a new map */
+    }
+
+    prev_pl_x = pl.pos.x;
+    prev_pl_y = pl.pos.y;
+
+    return;
 }

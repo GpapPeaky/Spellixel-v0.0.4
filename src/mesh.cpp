@@ -1,9 +1,5 @@
 #include "mesh.h"
 
-void mesh_generation(void){
-    
-}
-
 void mesh_bullet_collision(std::vector<Bullet>& bullet_vector){
 
     /* Bullet Collisions*/

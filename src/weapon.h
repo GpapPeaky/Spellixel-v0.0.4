@@ -1,8 +1,8 @@
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_timer.h>
 #include "sound.h"
 #include "init_win.h"
 #include "fx.h"
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_timer.h>
 #include <chrono>
 #include <cmath>
 #include <vector>

@@ -1,4 +1,4 @@
-#include "macros.h"
+#include "def.aux"
 #include "utils.h"
 #include "sprites.h"
 #include "init_win.h"

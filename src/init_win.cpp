@@ -1,13 +1,7 @@
 #include "init_win.h"
 
-/**
- * @include in macros
- * @ifnot organise / optimize them
-*/
-
 int true_x;
 int true_y;
-
 SDL_Window* win;
 SDL_Renderer* renderer;
 SDL_Surface* sprite;
@@ -17,61 +11,9 @@ Sprite pl; /* Player */
 Sprite bullet; /* Bullets */
 Sprite fence;
 
-/*___________________________________________________________________________________________*/
-
-// void init_background(void){
-
-//     background_tile1.sprite_bmp = IMG_Load("src/sprites/tiles/tile (3).png");
-//     background_tile_texture1 = SDL_CreateTextureFromSurface(renderer, background_tile1.sprite_bmp);
-//     SDL_FreeSurface(background_tile1.sprite_bmp);
-
-//     fence.sprite_bmp = IMG_Load("src/sprites/tiles/tile (15).png");
-//     fence.sprite_texture = SDL_CreateTextureFromSurface(renderer,fence.sprite_bmp);
-//     SDL_FreeSurface(fence.sprite_bmp);
-// }
-
-// void render_background(void){
-
-//     true_x = screen_x / MESH_SIZE;
-//     true_y = screen_y / MESH_SIZE + 1; /* The size is correct */
-
-//     for (int i = 0 ; i < true_x; i++) {
-//         for (int ii = 0 ; ii < true_y; ii++) {
-
-//             SDL_FRect pos;
-
-//             pos.h = MESH_SIZE;
-//             pos.w = MESH_SIZE;
-//             pos.x = i * MESH_SIZE;
-//             pos.y = ii * MESH_SIZE;
-
-//             SDL_RenderCopyF(renderer, background_tile_texture1, NULL, &pos);
-//         }
-//     }
-
-//     fence.pos.w = MESH_SIZE;
-//     fence.pos.h = MESH_SIZE;
-
-//     for(int i = 0 ; i < screen_x / MESH_SIZE + 1; i++){
-//         fence.pos.y = 0;
-//         fence.pos.x = i * MESH_SIZE;
-
-//         SDL_RenderCopyF(renderer,fence.sprite_texture, NULL, &fence.pos);   
-//     }
-
-//     for(int i = 0 ; i < screen_x / MESH_SIZE + 1; i++){
-//         fence.pos.y = screen_y - MESH_SIZE;
-//         fence.pos.x = i * MESH_SIZE;
-
-//         SDL_RenderCopyF(renderer,fence.sprite_texture, NULL, &fence.pos);   
-//     }
-
-//     /**
-//      * @note Fences this will have to change depending on the room seed that generates randomly
-//     */
-// }
-
-/*___________________________________________________________________________________________*/
+/* From def.aux */
+int screen_x;
+int screen_y;
 
 /* MUST: CONFIGURE THE BACKGROUND SIZE PROBLEM (test on laptop) NATIVE_SIZE -> NEWWINDOWSIZE*/
 

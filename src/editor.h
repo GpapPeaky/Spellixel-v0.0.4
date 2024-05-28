@@ -6,7 +6,7 @@
 #include <regex> 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
-#include "macros.h"
+#include "def.aux"
 #include "utils.h"
 
 /* TODO: Replace regex */
@@ -14,14 +14,9 @@
 #ifndef EDITOR
 #define EDITOR
 
-extern const int LOCAL_TILE_SIZE;
-extern const int scrn_w;
-extern const int scrn_h;
-
 extern SDL_Window* window;
 extern SDL_Renderer* renderer;
-
-extern int currentTile;
+extern int current_tile;
 
 /**
  * @brief Initialises the editor window

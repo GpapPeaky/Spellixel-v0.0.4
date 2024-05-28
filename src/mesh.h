@@ -1,5 +1,5 @@
 #include "init_win.h"
-#include "macros.h"
+#include "def.aux"
 #include <vector>
 #include <algorithm>
 #include "map_load.h"

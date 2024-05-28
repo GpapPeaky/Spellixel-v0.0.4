@@ -3,7 +3,7 @@
 #include "fx.h"
 #include "utils.h"
 #include "weapon.h"
-#include "macros.h"
+#include "def.aux"
 
 #ifndef PLAYER
 #define PLAYER

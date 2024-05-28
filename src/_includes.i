@@ -5,7 +5,7 @@
 #include "weapon.h"
 #include "player.h"
 #include "mesh.h"
-#include "macros.h"
+#include "def.aux"
 #include "enemy.h"
 #include "map_load.h"
 #include "item.h"

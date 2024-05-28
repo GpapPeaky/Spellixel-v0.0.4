@@ -2,42 +2,14 @@
 
 /*IDEA:  MOVE THIS FUCNTION SOMEWHERE ELSE */
 
-Update_t update_mesh_positions(void) {
-
-    srand(time(NULL));
-
-    static int prev_pl_x = pl.pos.x;
-    static int prev_pl_y = pl.pos.y;
-
-    int deltaX = pl.pos.x - prev_pl_x;
-    int deltaY = pl.pos.y - prev_pl_y;
-
-    if (pl.pos.x + pl.pos.w >= screen_x) {
-        current_map_idx = 1 + (rand() % ROOMS);
-
-        while(current_map_idx == 1){ /* IDX 1 IS THE STARTING POSITION */
-            current_map_idx = 1 + (rand() % ROOMS);
-        }
-
-        std::printf("Currenty at map <%d>\n",current_map_idx);
-        total_rooms_count++;
-
-        pl.pos.x = 0 - pl.pos.w; /* Resetting position as we move along to a new map */
-    }
-
-    prev_pl_x = pl.pos.x;
-    prev_pl_y = pl.pos.y;
-
-    return;
-}
-
 MAIN_T main(int c, char** v){
 
     load_sprite_init("Spellixel.pix"); /* Initialise a window, a renderer and some universal sprites */
     init_font();
     init_enemy_font();
     init_ui();
-    // load_and_play_wav_music("cubic_forest");
+    init_podium();
+    load_and_play_wav_music("cubic_forest");
 
    /* TODO: IMPLEMENT FUNCTION POINTERS WHEREVER YOU CAN FOR ENEMY FUNCTIONS */
    /* TODO: IMPLEMENT FUNCTION POINTERS WHEREVER YOU CAN FOR ITEM FUNCTIONS */
@@ -45,13 +17,13 @@ MAIN_T main(int c, char** v){
     /*______________________________________________________________*/
 
     // chicken(400, 600);
-    // chicken(600, 500);
+    chicken(600, 500);
     goblin(200 ,600);
-    // hilbert(MID_X + 75, MID_Y);
-    // villager(600,500);
-    // sheep(1250, 330);
-    // sheep(1300, 330);
-    // sheep(1250, 400);
+    hilbert(MID_X + 75, MID_Y);
+    villager(600,500);
+    sheep(1250, 330);
+    sheep(1300, 330);
+    sheep(1250, 400);
 
     /*______________________________________________________________*/
 
@@ -62,11 +34,11 @@ MAIN_T main(int c, char** v){
     /*______________________________________________________________*/
 
     // init_podium(); /* Podium texture, ect */
-    // spawn_item(MID_X, MID_Y, "county_crown");
+    spawn_item(MID_X, MID_Y, "county_crown");
     // spawn_item(600, 600, "county_necklace");
     // spawn_item(400, 600, "county_gauntlets");
-    // spawn_item(500, 600, "goggles_of_greenflake");
-    // spawn_item(200, 600, "medal_of_bloodmoon");
+    // spawn_item(700, 600, "medal_of_bloodmoon");
+    // spawn_item(500 + 150, 450, "goggles_of_greenflake");
 
     /*______________________________________________________________*/
     
@@ -104,14 +76,6 @@ MAIN_T main(int c, char** v){
         mesh_bullet_collision(pl.sprite_bullets);
         item_player_collision();
 
-        /*
-        for( auto& enemy : enemies){
-            mesh_bullet_collision(enemy.sprite.sprite_bullets);
-        }
-
-        CRASHES THE PROGRAM, MODIFYING THE ARRAY WHILE ITERATING IT -> UPRECEDENTED BEHAVIOUR
-        */
-
         update_player(deltaTime);
         update_mesh_positions();
         enemy_updates(deltaTime);
@@ -128,8 +92,8 @@ MAIN_T main(int c, char** v){
          * -Renditions: background -> meshes -> player -> player bullets -> enemies -> enemy bullets.
         */
 
-        render_background_tiles(background); /* Memory leaks */ // FIXED
-        render_mesh_tiles(mesh_map); /* Memory leaks 5 MB per tick */ //FIXED
+        render_background_tiles(background);
+        render_mesh_tiles(mesh_map);
         MESHES_F(pl.sprite_bullets);
         render_item();
         render_player();
@@ -148,7 +112,7 @@ MAIN_T main(int c, char** v){
 
     /* No input can be taken through the console until the window has been destroyed */
 
-    SDL_Delay(100); /* Lower CPU overload */
+    // SDL_Delay(100); /* Lower CPU overload */
 
     for (const auto& bullet : pl.sprite_bullets){
         SDL_DestroyTexture(bullet.bullet_texture);
