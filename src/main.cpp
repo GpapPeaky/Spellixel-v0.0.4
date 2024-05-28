@@ -1,7 +1,5 @@
 #include "_includes.i"
 
-/*IDEA:  MOVE THIS FUCNTION SOMEWHERE ELSE */
-
 MAIN_T main(int c, char** v){
 
     load_sprite_init("Spellixel.pix"); /* Initialise a window, a renderer and some universal sprites */
@@ -24,6 +22,8 @@ MAIN_T main(int c, char** v){
     sheep(1250, 330);
     sheep(1300, 330);
     sheep(1250, 400);
+
+    /* TODO: TRY MAKING A MENU */
 
     /*______________________________________________________________*/
 
@@ -112,7 +112,7 @@ MAIN_T main(int c, char** v){
 
     /* No input can be taken through the console until the window has been destroyed */
 
-    // SDL_Delay(100); /* Lower CPU overload */
+    SDL_Delay(100); /* Lower CPU overload */
 
     for (const auto& bullet : pl.sprite_bullets){
         SDL_DestroyTexture(bullet.bullet_texture);
