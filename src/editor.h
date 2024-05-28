@@ -9,8 +9,6 @@
 #include "def.aux"
 #include "utils.h"
 
-/* TODO: Replace regex */
-
 #ifndef EDITOR
 #define EDITOR
 
