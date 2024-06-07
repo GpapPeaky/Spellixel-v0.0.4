@@ -53,7 +53,5 @@ typedef struct sprite{
 }Sprite;
 
 extern Sprite pl;  /* Player */
-extern Sprite bcg; /* Background */
-extern Sprite fence;
 
 #endif

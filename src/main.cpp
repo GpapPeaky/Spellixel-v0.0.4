@@ -7,7 +7,7 @@ MAIN_T main(int c, char** v){
     init_enemy_font();
     init_ui();
     init_podium();
-    load_and_play_wav_music("cubic_forest");
+    // load_and_play_wav_music("cubic_forest");
 
    /* TODO: IMPLEMENT FUNCTION POINTERS WHEREVER YOU CAN FOR ENEMY FUNCTIONS */
    /* TODO: IMPLEMENT FUNCTION POINTERS WHEREVER YOU CAN FOR ITEM FUNCTIONS */
@@ -96,9 +96,9 @@ MAIN_T main(int c, char** v){
         render_mesh_tiles(mesh_map);
         MESHES_F(pl.sprite_bullets);
         render_item();
+        render_enemies(); 
         render_player();
         render_player_bullets();
-        render_enemies(); 
         render_enemy_bullets();
         render_item_on_player(); /* Works as intended */
 
