@@ -64,20 +64,15 @@ MAIN_T main(int c, char** v){
         #endif /* cpc_mod */
 
         /* Different maps at each next room */
-
         /* TODO: Move the fucking clock */
 
-        std::string map_path = "maps/map" + std::to_string(current_map_idx) +  ".mdf";
-        std::string mesh_path = "maps/mesh" +  std::to_string(current_map_idx) +  ".mdf";
-
-        std::vector<std::vector<int>> background = load_map(map_path);
-        std::vector<std::vector<int>> mesh_map = load_map(mesh_path);
+        std::vector<std::vector<int>> background = load_map("maps/map" + std::to_string(current_map_idx) +  ".mdf");
+        std::vector<std::vector<int>> mesh_map = load_map("maps/mesh" +  std::to_string(current_map_idx) +  ".mdf");
 
         auto current_time = std::chrono::high_resolution_clock::now();
         static auto prev_time = current_time;
         std::chrono::duration<float> elapsed = current_time - prev_time;
         prev_time = current_time;
-
         float dt = elapsed.count();
 
         while(SDL_PollEvent(&e) != 0){
