@@ -41,6 +41,10 @@ obj: editor.o resource.o
 
 ################################################
 
+all: Spellixel Editor
+
+################################################
+
 clean:
 	@echo Cleaning Up...
 	del $(SPELLIXEL).exe
