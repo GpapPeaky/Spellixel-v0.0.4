@@ -91,8 +91,7 @@ MAIN_T main(int c, char** v){
             handle_shooting(e);
         }
 
-        mesh_player_collision();
-        mesh_bullet_collision(pl.sprite_bullets);
+        mesh_collisions(pl.sprite_bullets);
         item_player_collision();
 
         update_player(dt);
@@ -111,7 +110,6 @@ MAIN_T main(int c, char** v){
          * -Renditions: background -> meshes -> player -> player bullets -> enemies -> enemy bullets.
         */
 
-        mesh_collisions(pl.sprite_bullets);
         render_background_tiles(background);
         render_mesh_tiles(mesh_map);
         render_item();
