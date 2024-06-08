@@ -76,7 +76,7 @@ MAIN_T main(int c, char** v){
         std::chrono::duration<float> elapsed = current_time - prev_time;
         prev_time = current_time;
 
-        float deltaTime = elapsed.count();
+        float dt = elapsed.count();
 
         while(SDL_PollEvent(&e) != 0){
             
@@ -93,9 +93,9 @@ MAIN_T main(int c, char** v){
         mesh_bullet_collision(pl.sprite_bullets);
         item_player_collision();
 
-        update_player(deltaTime);
+        update_player(dt);
         update_mesh_positions();
-        enemy_updates(deltaTime);
+        enemy_updates(dt);
 
         shoot(0.1f); /* Update? ...maybe? */
 
