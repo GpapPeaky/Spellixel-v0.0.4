@@ -1,4 +1,12 @@
 #include "_includes.i"
+#include "_mod.i"
+
+#ifdef cpc_mod
+
+    Uint64 start, end, seconds;
+    SDL_FRect cpc_pos;
+
+#endif /* cpc_mod */
 
 MAIN_T main(int c, char** v){
 
@@ -47,6 +55,14 @@ MAIN_T main(int c, char** v){
 
     while(!not_running){
 
+        #ifdef cpc_mod
+
+            start = SDL_GetPerformanceCounter();
+            cpc_pos.x = 0.0f;
+            cpc_pos.y = 25.0f;
+
+        #endif /* cpc_mod */
+
         /* Different maps at each next room */
 
         std::string map_path = "maps/map" + std::to_string(current_map_idx) +  ".mdf";
@@ -63,6 +79,7 @@ MAIN_T main(int c, char** v){
         float deltaTime = elapsed.count();
 
         while(SDL_PollEvent(&e) != 0){
+            
             if(e.type == SDL_QUIT){
                 not_running = NOT_RUNNING;
             }
@@ -106,6 +123,17 @@ MAIN_T main(int c, char** v){
         render_on_mouse_hover();
 
         render_UI(); /* IDEA: REPAINT THE UI */
+
+        #ifdef cpc_mod
+
+            end = SDL_GetPerformanceCounter();
+
+            seconds = (end - start);
+            std::string cpc = "cpc: " + std::to_string(seconds);
+
+            render_text(cpc, &cpc_pos);
+
+        #endif /* cpc_mod */
 
         SDL_RenderPresent(renderer);
     }
