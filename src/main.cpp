@@ -142,7 +142,7 @@ MAIN_T main(int c, char** v){
 
     SDL_Delay(100); /* Lower CPU overload */
 
-    for (const auto& bullet : pl.sprite_bullets){
+    for(const auto& bullet : pl.sprite_bullets){
         SDL_DestroyTexture(bullet.bullet_texture);
     }
 
