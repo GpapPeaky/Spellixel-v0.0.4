@@ -111,9 +111,9 @@ MAIN_T main(int c, char** v){
          * -Renditions: background -> meshes -> player -> player bullets -> enemies -> enemy bullets.
         */
 
+        mesh_collisions(pl.sprite_bullets);
         render_background_tiles(background);
         render_mesh_tiles(mesh_map);
-        mesh_collisions(pl.sprite_bullets);
         render_item();
         render_enemies(); 
         render_player();
