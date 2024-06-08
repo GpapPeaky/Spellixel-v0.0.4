@@ -71,10 +71,10 @@ MAIN_T main(int c, char** v){
         std::vector<std::vector<int>> background = load_map(map_path);
         std::vector<std::vector<int>> mesh_map = load_map(mesh_path);
 
-        auto currentTime = std::chrono::high_resolution_clock::now();
-        static auto prevTime = currentTime;
-        std::chrono::duration<float> elapsed = currentTime - prevTime;
-        prevTime = currentTime;
+        auto current_time = std::chrono::high_resolution_clock::now();
+        static auto prev_time = current_time;
+        std::chrono::duration<float> elapsed = current_time - prev_time;
+        prev_time = current_time;
 
         float deltaTime = elapsed.count();
 
