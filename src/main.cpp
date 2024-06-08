@@ -65,6 +65,8 @@ MAIN_T main(int c, char** v){
 
         /* Different maps at each next room */
 
+        /* TODO: Move the fucking clock */
+
         std::string map_path = "maps/map" + std::to_string(current_map_idx) +  ".mdf";
         std::string mesh_path = "maps/mesh" +  std::to_string(current_map_idx) +  ".mdf";
 
