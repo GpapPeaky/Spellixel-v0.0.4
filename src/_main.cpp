@@ -113,7 +113,7 @@ MAIN_T main(int c, char** v){
 
         render_background_tiles(background);
         render_mesh_tiles(mesh_map);
-        MESHES_F(pl.sprite_bullets);
+        mesh_collisions(pl.sprite_bullets);
         render_item();
         render_enemies(); 
         render_player();

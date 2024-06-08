@@ -31,7 +31,7 @@ void render_meshes(void);
  * 
  * @param bullet_array Array of bullets to check for collisions
 */
-void MESHES_F(std::vector <Bullet> &bullet_array);
+void mesh_collisions(std::vector <Bullet> &bullet_array);
 
 /**
  * @brief Updates meshes' position 

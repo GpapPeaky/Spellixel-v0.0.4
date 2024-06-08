@@ -65,7 +65,7 @@ void mesh_player_collision(void){
     }
 }
 
-void MESHES_F(std::vector <Bullet> &bullet_array){
+void mesh_collisions(std::vector <Bullet> &bullet_array){
     mesh_bullet_collision(bullet_array);
     mesh_player_collision();
 }
