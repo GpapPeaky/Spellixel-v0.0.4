@@ -15,7 +15,7 @@ Sprite fence;
 int screen_x;
 int screen_y;
 
-/* MUST: CONFIGURE THE BACKGROUND SIZE PROBLEM (test on laptop) NATIVE_SIZE -> NEWWINDOWSIZE*/
+/* MUST: CONFIGURE THE BACKGROUND SIZE PROBLEM (test on laptop) NATIVE_SIZE -> NEWWINDOWSIZE */
 
 void load_sprite_init(const char* name){
 
