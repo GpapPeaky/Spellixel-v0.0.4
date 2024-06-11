@@ -17,15 +17,9 @@ MAIN_T main(int c, char** v){
     init_podium();
     // load_and_play_wav_music("cubic_forest");
 
-   /* TODO: IMPLEMENT FUNCTION POINTERS WHEREVER YOU CAN FOR ENEMY FUNCTIONS */
-   /* TODO: IMPLEMENT FUNCTION POINTERS WHEREVER YOU CAN FOR ITEM FUNCTIONS */
-
-    /*______________________________________________________________*/
-
+    /* TODO: IMPLEMENT FUNCTION POINTERS WHEREVER YOU CAN FOR ENEMY FUNCTIONS */
+    /* TODO: IMPLEMENT FUNCTION POINTERS WHEREVER YOU CAN FOR ITEM FUNCTIONS */
     /* TODO: TRY MAKING A MENU */
-
-    /*______________________________________________________________*/
-
     /* TODO: RANDOMISE ITEM GENERATION */
     /* TODO: RANDOMISE ROOM GENERATION ( READ FROM THE MDF SEEDS ) */
     /* TODO: RANDOMISE ENEMY GENERATION */
