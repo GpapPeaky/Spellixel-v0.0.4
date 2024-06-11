@@ -56,4 +56,4 @@ Render_t render_mesh_tiles(std::vector<std::vector<int>>& map);
 /**
  * @brief Updates the loaded map
 */
-Update_t update_mesh_positions(void);
+Update_t update_loaded_map(void);

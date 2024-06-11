@@ -1,5 +1,7 @@
 #include <SDL2/SDL.h>
 #include <unordered_set>
+#include "enemy.h"
+#include "item.h"
 #include "fx.h"
 #include "utils.h"
 #include "weapon.h"
@@ -26,6 +28,6 @@ void update_player(float deltaTime);
 /**
  * @brief Renders the player model
 */
-void render_player(void);
+void render_player_and_enemies(void);
 
 #endif

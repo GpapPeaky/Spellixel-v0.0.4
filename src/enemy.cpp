@@ -452,3 +452,19 @@ void enemy_updates(float dt){
         update_enemy_movement();
         update_enemy();
 }
+
+void print_enemies(){
+    for(const auto& enemy : enemies){
+        std::printf("NAME: %s, TYPE: %d\n",enemy.name.c_str(), enemy.type);
+    }
+}
+
+uint scan_for_aggr_enemies(){
+    int count = 0;
+
+    for(auto& enemy : enemies){
+        if(enemy.type == agressive){ count++; }
+    }
+
+    return count;
+}

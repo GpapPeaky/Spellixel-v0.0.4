@@ -230,4 +230,16 @@ void update_enemy(void);
 */
 void enemy_updates(float dt);
 
+/**
+ * @brief Prints All Registered Enemies
+ */
+void print_enemies();
+
+/**
+ * @brief Scans for the agressive enemies in the enemies vector
+ * 
+ * @returns Number of agressive enemies
+ */
+uint scan_for_aggr_enemies();
+
 #endif /* ENEMY */

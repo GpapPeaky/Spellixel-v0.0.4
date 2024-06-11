@@ -22,15 +22,6 @@ MAIN_T main(int c, char** v){
 
     /*______________________________________________________________*/
 
-    // chicken(400, 600);
-    chicken(600, 500);
-    goblin(200 ,600);
-    hilbert(MID_X + 75, MID_Y);
-    villager(600,500);
-    sheep(1250, 330);
-    sheep(1300, 330);
-    sheep(1250, 400);
-
     /* TODO: TRY MAKING A MENU */
 
     /*______________________________________________________________*/
@@ -92,7 +83,7 @@ MAIN_T main(int c, char** v){
 
         /* Updates */
         update_player(dt);
-        update_mesh_positions();
+        update_loaded_map();
         enemy_updates(dt);
 
         shoot(0.1f); /* Update? ...maybe? */
@@ -111,11 +102,9 @@ MAIN_T main(int c, char** v){
         render_background_tiles(background);
         render_mesh_tiles(mesh_map);
         render_item();
-        render_enemies(); 
-        render_player();
+        render_player_and_enemies();
         render_player_bullets();
         render_enemy_bullets();
-        render_item_on_player(); /* Works as intended */
 
         // render_on_player("Nick Geuhrs");
         render_on_mouse_hover();

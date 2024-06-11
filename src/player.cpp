@@ -77,7 +77,31 @@ void update_player(float deltaTime){
     update_bullets(deltaTime);
 }
 
-Render_t render_player(void){
-    draw_sprite_shadow(pl, 0);
-    SDL_RenderCopyF(renderer, pltexture, NULL, &pl.pos); /* Player */
+Render_t render_player_and_enemies(void){
+
+    const auto& first_enemy = enemies.empty() ? nullptr : &enemies.front();
+
+    /* Empty Enemies Array */
+    if(!first_enemy){
+        draw_sprite_shadow(pl, 0);
+        SDL_RenderCopyF(renderer, pltexture, NULL, &pl.pos); /* Player */
+        render_item_on_player();
+        return;
+    }
+
+    for(const auto& enemy : enemies){
+        if(pl.pos.y < enemy.sprite.pos.y){
+        draw_sprite_shadow(pl, 0);
+        SDL_RenderCopyF(renderer, pltexture, NULL, &pl.pos); /* Player */
+        render_item_on_player();
+        render_enemies();
+        return;
+        }else{
+            render_enemies();
+            draw_sprite_shadow(pl, 0);
+            SDL_RenderCopyF(renderer, pltexture, NULL, &pl.pos); /* Player */
+            render_item_on_player();
+            return;
+        }
+    }
 }

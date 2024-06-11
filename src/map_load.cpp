@@ -1,4 +1,5 @@
 #include "map_load.h"
+#include "enemy.h"
 
 /* Always one up 1-TEXTURES */
 
@@ -55,7 +56,7 @@ Render_t render_background_tiles(std::vector<std::vector<int>>& map){
     }
 }
 
-Render_t render_mesh_tiles(std::vector<std::vector<int>>& map ){
+Render_t render_mesh_tiles(std::vector<std::vector<int>>& map){
     Tiles textures[TEXTURES];
     meshes.clear();
 
@@ -85,7 +86,7 @@ Render_t render_mesh_tiles(std::vector<std::vector<int>>& map ){
     }
 }
 
-Update_t update_mesh_positions(void){
+Update_t update_loaded_map(void){
 
     srand(time(NULL));
 
@@ -95,7 +96,8 @@ Update_t update_mesh_positions(void){
     int deltaX = pl.pos.x - prev_pl_x;
     int deltaY = pl.pos.y - prev_pl_y;
 
-    if (pl.pos.x + pl.pos.w >= screen_x) {
+    if(pl.pos.x + pl.pos.w >= screen_x && (enemies.empty() == true || scan_for_aggr_enemies() == 0)){
+        enemies.clear(); /* Clear the enemies vector */
         current_map_idx = 1 + (rand() % ROOMS);
 
         while(current_map_idx == 1){ /* IDX 1 IS THE STARTING POSITION */

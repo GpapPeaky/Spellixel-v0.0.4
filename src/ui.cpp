@@ -1,11 +1,12 @@
 #include "ui.h"
 
 SDL_Rect ui_rect;
-SDL_Texture * ui_texture;
+SDL_Texture *ui_texture;
 
 SDL_FRect HP_rect;
 SDL_FRect att_rect;
 SDL_FRect room_rect;
+SDL_FRect enemies_rect;
 
 Init_t init_ui(void){
 
@@ -23,11 +24,14 @@ Init_t init_ui(void){
     ui_rect.w = SCREEN_WIDTH;
     ui_rect.x = 0;
     ui_rect.y = 1024;
+
+    return;
 }
 
 Render_t render_ui_background(void){
     SDL_RenderCopy(renderer, ui_texture, NULL, &ui_rect);
     /* The texture will be changed in the future */
+    return;
 }
 
 Render_t render_player_stats(void){
@@ -35,11 +39,14 @@ Render_t render_player_stats(void){
     HP_rect = { 15, 1064, 55, 55 };
     att_rect = { 85, 1064, 55, 55 }; /* 15 pixel space for each stat */
     room_rect = { 155, 1064, 55, 55 };
+    enemies_rect = { 240, 1064, 55, 55 };
 
     render_text(("HP: " + std::to_string(pl.HP)).c_str(), &HP_rect);
     render_text(("ATT: " + std::to_string(pl.Bullets.dmg)).c_str(), &att_rect);
     render_text(("ROOM: " + std::to_string(total_rooms_count)).c_str(), &room_rect);
+    render_text(("ENEMIES: " + std::to_string(scan_for_aggr_enemies())).c_str(), &enemies_rect);
 
+    return;
     /* More stats will be added in the future */
 }
 
