@@ -70,6 +70,7 @@ MAIN_T main(int c, char** v){
             
             if(e.type == SDL_QUIT){
                 not_running = NOT_RUNNING;
+                goto EXIT;
             }
             /* Handling Keyboard */
             handle_input(e);
@@ -126,29 +127,30 @@ MAIN_T main(int c, char** v){
     }
 
     /* No input can be taken through the console until the window has been destroyed */
+    EXIT:
 
-    SDL_Delay(100); /* Lower CPU overload */
+        SDL_Delay(100); /* Lower CPU overload */
 
-    for(const auto& bullet : pl.sprite_bullets){
-        SDL_DestroyTexture(bullet.bullet_texture);
-    }
+        for(const auto& bullet : pl.sprite_bullets){
+            SDL_DestroyTexture(bullet.bullet_texture);
+        }
 
-    for(const auto& mesh : meshes){
-        SDL_DestroyTexture(mesh.sprite_texture);
-    }
+        for(const auto& mesh : meshes){
+            SDL_DestroyTexture(mesh.sprite_texture);
+        }
 
-    for(const auto& enemy : enemies){
-        SDL_DestroyTexture(enemy.sprite.sprite_texture);
-    }
+        for(const auto& enemy : enemies){
+            SDL_DestroyTexture(enemy.sprite.sprite_texture);
+        }
 
-    Mix_CloseAudio();
-    TTF_CloseFont(font);
-    TTF_Quit();
-    SDL_FreeCursor(CURSOR);
-    SDL_DestroyTexture(pltexture);
-    SDL_DestroyRenderer(renderer);
-    SDL_DestroyWindow(win);
-    SDL_Quit();
+        Mix_CloseAudio();
+        TTF_CloseFont(font);
+        TTF_Quit();
+        SDL_FreeCursor(CURSOR);
+        SDL_DestroyTexture(pltexture);
+        SDL_DestroyRenderer(renderer);
+        SDL_DestroyWindow(win);
+        SDL_Quit();
 
     return EXIT_SUCCESS;
 }
