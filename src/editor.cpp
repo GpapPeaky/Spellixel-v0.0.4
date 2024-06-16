@@ -62,7 +62,7 @@ Init_t init(void){
 
 Update_t tile_on_click(SDL_Event& event){
     if(event.type == SDL_QUIT){
-        std::ofstream file("_FILE.mdf");
+        std::ofstream file("map.mdf");
         file << map_data[0].size() << " " << map_data.size() << std::endl;
 
         for(const auto& row : map_data){

@@ -40,21 +40,21 @@ void mesh_player_collision(void){
             float overlapX = 0.0f;
             float overlapY = 0.0f;
 
-            if (pl.pos.x < mesh.pos.x) {
+            if(pl.pos.x < mesh.pos.x){
                 overlapX = pl.pos.x + pl.pos.w - mesh.pos.x;
-            } else {
+            }else{
                 overlapX = mesh.pos.x + mesh.pos.w - pl.pos.x;
             }
 
-            if (pl.pos.y < mesh.pos.y) {
+            if(pl.pos.y < mesh.pos.y){
                 overlapY = pl.pos.y + pl.pos.h - mesh.pos.y;
-            } else {
+            } else{
                 overlapY = mesh.pos.y + mesh.pos.h - pl.pos.y;
             }
 
-            if (overlapX < overlapY) {
+            if(overlapX < overlapY){
                 pl.pos.x += (pl.pos.x < mesh.pos.x) ? -overlapX : overlapX;
-            } else {
+            }else{
                 pl.pos.y += (pl.pos.y < mesh.pos.y) ? -overlapY : overlapY;
             }
 

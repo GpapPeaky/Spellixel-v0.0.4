@@ -15,7 +15,7 @@ MAIN_T main(int c, char** v){
     init_enemy_font();
     init_ui();
     init_podium();
-    // load_and_play_wav_music("cubic_forest");
+    load_and_play_wav_music("cubic_forest");
 
     /* TODO: IMPLEMENT FUNCTION POINTERS WHEREVER YOU CAN FOR ENEMY FUNCTIONS */
     /* TODO: IMPLEMENT FUNCTION POINTERS WHEREVER YOU CAN FOR ITEM FUNCTIONS */
