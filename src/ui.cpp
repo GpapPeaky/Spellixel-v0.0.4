@@ -20,8 +20,8 @@ Init_t init_ui(void){
         std::printf("%s\n",SDL_GetError());
     }
 
-    ui_rect.h = 56;
-    ui_rect.w = SCREEN_WIDTH;
+    ui_rect.h = 56 * render_factor;
+    ui_rect.w = SCREEN_WIDTH * render_factor;
     ui_rect.x = 0;
     ui_rect.y = 1024;
 
