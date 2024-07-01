@@ -1,5 +1,6 @@
 #include "init_win.h"
 
+float render_factor;
 int true_x;
 int true_y;
 SDL_Window* win;
@@ -9,7 +10,6 @@ SDL_Texture* pltexture;
 SDL_Cursor* CURSOR;
 Sprite pl; /* Player */
 Sprite bullet; /* Bullets */
-Sprite fence;
 
 /* From def.aux */
 int screen_x;
@@ -24,6 +24,18 @@ void load_sprite_init(const char* name){
     SDL_Init(SDL_INIT_AUDIO | SDL_INIT_VIDEO); /* Initialises the GUI library */
     IMG_Init(IMG_INIT_PNG);
     TTF_Init(); /* Initialise The Library */
+
+    SDL_DisplayMode display_mode;
+    SDL_GetCurrentDisplayMode(0, &display_mode);
+
+    int local_x = display_mode.w;
+    int local_y = display_mode.h;
+
+    float diagonal_size = std::sqrt(local_x * local_x + local_y * local_y);
+
+    const float base_diagonal_size = std::sqrt(1920 * 1920 + 1080 * 1080);
+
+    render_factor = diagonal_size / base_diagonal_size; /* Calculate the factor */
 
     int audio_rate = 22050;
     Uint16 audio_format = AUDIO_S16SYS;
@@ -46,8 +58,8 @@ void load_sprite_init(const char* name){
 
     pl.HP = 100; /* Base health */
     pl.Bullets.dmg = 5; /* Base damage */
-    pl.pos.h = PLAYER_SIZE_Y;
-    pl.pos.w = PLAYER_SIZE_X;
+    pl.pos.h = PLAYER_SIZE_Y * render_factor;
+    pl.pos.w = PLAYER_SIZE_X * render_factor;
     pl.pos.y = 300;
     pl.pos.x = 900;
     pl.acc.velocity_x = 0.0f;

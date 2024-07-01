@@ -45,8 +45,8 @@ Render_t render_background_tiles(std::vector<std::vector<int>>& map){
         for(int j = 0 ; j < X_S ; j++){
             int tile_id = map[i][j];
             if(tile_id >= 1 && tile_id < TEXTURES){
-                SDL_Rect pos = { j * MESH_SIZE, i * MESH_SIZE, MESH_SIZE, MESH_SIZE };
-                SDL_RenderCopy(renderer, textures[tile_id], NULL, &pos);
+                SDL_FRect pos = { j * MESH_SIZE * render_factor, i * MESH_SIZE * render_factor, MESH_SIZE * render_factor, MESH_SIZE * render_factor };
+                SDL_RenderCopyF(renderer, textures[tile_id], NULL, &pos);
             }
         }
     }
@@ -74,7 +74,7 @@ Render_t render_mesh_tiles(std::vector<std::vector<int>>& map){
             if(tile_id >= 1 && tile_id < TEXTURES){
                 Tiles tile;
 
-                tile.pos = { j * MESH_SIZE, i * MESH_SIZE, MESH_SIZE, MESH_SIZE };
+                tile.pos = { (int)(j * MESH_SIZE * render_factor), (int)(i * MESH_SIZE * render_factor), (int)(MESH_SIZE * render_factor), (int)(MESH_SIZE * render_factor) };
                 meshes.push_back(tile);
                 SDL_RenderCopy(renderer, textures[tile_id].sprite_texture, NULL, &tile.pos);
             }

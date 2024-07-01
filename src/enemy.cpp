@@ -46,18 +46,18 @@ Render_t render_damaged_enemies(int dmg_taken, SDL_FRect* position){
 
     e_rect.x = position->x;
     e_rect.y = position->y - 20;
-    e_rect.h = e_text->h;
-    e_rect.w = e_text->w;
+    e_rect.h = e_text->h * render_factor;
+    e_rect.w = e_text->w * render_factor;
 
     e_b_rect.x = e_rect.x + 2;
     e_b_rect.y = e_rect.y + 2;
-    e_b_rect.h = e_text->h + 2;
-    e_b_rect.w = e_text->w + 2;
+    e_b_rect.h = (e_text->h * render_factor) + 2;
+    e_b_rect.w = (e_text->w * render_factor) + 2;
 
     e_c_rect.x = e_rect.x - 2;
     e_c_rect.y = e_rect.y - 2;
-    e_c_rect.h = e_text->h;
-    e_c_rect.w = e_text->w;
+    e_c_rect.h = e_text->h * render_factor;
+    e_c_rect.w = e_text->w * render_factor;
 
 
     SDL_RenderCopyF(renderer, e_b_txt, NULL, &e_c_rect);
@@ -107,7 +107,7 @@ bool bullet_hits_mesh(const Bullet &bullet){
     SDL_FRect bullet_rectangle = {bullet.bullet_pos.x, bullet.bullet_pos.y, bullet.bullet_pos.w, bullet.bullet_pos.h};
 
     for (const auto &mesh : meshes){
-        SDL_FRect mesh_rectangle = {(float) mesh.pos.x, (float) mesh.pos.y, (float)mesh.pos.w, (float) mesh.pos.h};
+        SDL_FRect mesh_rectangle = {(float) mesh.pos.x, (float) mesh.pos.y, (float)mesh.pos.w * render_factor, (float) mesh.pos.h * render_factor};
 
         if (SDL_HasIntersectionF(&bullet_rectangle, &mesh_rectangle)){
             return true;
@@ -202,7 +202,7 @@ Update_t update_enemy(void){
 
                 bullet_it = pl.sprite_bullets.erase(bullet_it);
             }else{
-                ++bullet_it;\
+                ++bullet_it;
             }
         }
 
@@ -252,8 +252,8 @@ Enemy chicken(int x, int y){
 
     SDL_FreeSurface(chicken.sprite.sprite_bmp);
 
-    chicken.sprite.Bullets.bullet_pos.h = 15;
-    chicken.sprite.Bullets.bullet_pos.w = 18;
+    chicken.sprite.Bullets.bullet_pos.h = 15 * render_factor;
+    chicken.sprite.Bullets.bullet_pos.w = 18 * render_factor;
 
     chicken.sprite.Bullets.bullet_acc.velocity_x = 70.0f;
     chicken.sprite.Bullets.bullet_acc.velocity_y = 70.0f;
@@ -263,8 +263,8 @@ Enemy chicken(int x, int y){
     chicken.wander.min.x = x - 20;
     chicken.wander.min.y = y - 30;
 
-    chicken.sprite.pos.h = 40; /* 4 times the sprite size */
-    chicken.sprite.pos.w = 40;
+    chicken.sprite.pos.h = 40 * render_factor; /* 4 times the sprite size */
+    chicken.sprite.pos.w = 40 * render_factor;
     chicken.sprite.pos.x = x;
     chicken.sprite.pos.y = y;
 
@@ -294,8 +294,8 @@ Enemy sheep(int x, int y){
     sheep.wander.min.x = x - 20;
     sheep.wander.min.y = y - 30;
 
-    sheep.sprite.pos.h = 60; /* 4 times the sprite size */
-    sheep.sprite.pos.w = 68;
+    sheep.sprite.pos.h = 60 * render_factor; /* 4 times the sprite size */
+    sheep.sprite.pos.w = 68 * render_factor;
     sheep.sprite.pos.x = x;
     sheep.sprite.pos.y = y;
 
@@ -329,8 +329,8 @@ Enemy john(int x, int y){
     john.wander.min.x = x;
     john.wander.min.y = y;
 
-    john.sprite.pos.h = 60; /* 4 times the sprite size */
-    john.sprite.pos.w = 60;
+    john.sprite.pos.h = 60 * render_factor; /* 4 times the sprite size */
+    john.sprite.pos.w = 60 * render_factor;
     john.sprite.pos.x = x;
     john.sprite.pos.y = y;
 
@@ -361,8 +361,8 @@ Enemy hilbert(int x, int y){
     hilbert.wander.min.x = x;
     hilbert.wander.min.y = y;
 
-    hilbert.sprite.pos.h = 60; /* 4 times the sprite size */
-    hilbert.sprite.pos.w = 60;
+    hilbert.sprite.pos.h = 60 * render_factor; /* 4 times the sprite size */
+    hilbert.sprite.pos.w = 60 * render_factor;
     hilbert.sprite.pos.x = x;
     hilbert.sprite.pos.y = y;
 
@@ -391,8 +391,8 @@ Enemy goblin(int x, int y){
     goblin.sprite.Bullets.bullet_texture = SDL_CreateTextureFromSurface(renderer,goblin.sprite.Bullets.bullet_png);
     SDL_FreeSurface(goblin.sprite.Bullets.bullet_png);
 
-    goblin.sprite.Bullets.bullet_pos.w = 27 ;
-    goblin.sprite.Bullets.bullet_pos.h = 18;
+    goblin.sprite.Bullets.bullet_pos.w = 27 * render_factor;
+    goblin.sprite.Bullets.bullet_pos.h = 18 * render_factor;
 
     goblin.sprite.Bullets.bullet_acc.velocity_x = 50.0f;
     goblin.sprite.Bullets.bullet_acc.velocity_y = 50.0f;
@@ -402,8 +402,8 @@ Enemy goblin(int x, int y){
     goblin.wander.min.x = x - 50;
     goblin.wander.min.y = y - 150;
 
-    goblin.sprite.pos.h = 60; /* 4 times the sprite size */
-    goblin.sprite.pos.w = 60;
+    goblin.sprite.pos.h = 60 * render_factor; /* 4 times the sprite size */
+    goblin.sprite.pos.w = 60 * render_factor;
     goblin.sprite.pos.x = x;
     goblin.sprite.pos.y = y;
 
@@ -433,8 +433,8 @@ Enemy villager(int x, int y){
     villager.wander.min.x = x;
     villager.wander.min.y = y;
 
-    villager.sprite.pos.h = 60; /* 4 times the sprite size */
-    villager.sprite.pos.w = 60;
+    villager.sprite.pos.h = 60 * render_factor; /* 4 times the sprite size */
+    villager.sprite.pos.w = 60 * render_factor;
     villager.sprite.pos.x = x;
     villager.sprite.pos.y = y;
 

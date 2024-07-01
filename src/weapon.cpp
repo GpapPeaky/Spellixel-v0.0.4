@@ -25,8 +25,8 @@ void handle_shooting(SDL_Event& e){
             pl.Bullets.bullet_png = IMG_Load("src/sprites/bullets/bullet.png"); /* PLAYER BULLET TEXTURE */
             pl.Bullets.bullet_texture = SDL_CreateTextureFromSurface(renderer, pl.Bullets.bullet_png);
 
-            pl.Bullets.bullet_pos.w = pl.Bullets.bullet_png->w * 4;
-            pl.Bullets.bullet_pos.h = pl.Bullets.bullet_png->h * 4;
+            pl.Bullets.bullet_pos.w = pl.Bullets.bullet_png->w * 4 * render_factor;
+            pl.Bullets.bullet_pos.h = pl.Bullets.bullet_png->h * 4 * render_factor;
             
             pl.sprite_bullets.push_back(pl.Bullets);
 

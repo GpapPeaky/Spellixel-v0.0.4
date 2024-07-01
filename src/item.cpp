@@ -39,8 +39,8 @@ Update_t spawn_item(int x, int y, std::string item_name){
 
     SDL_FreeSurface(item_to_spawn.item_png);
 
-    item_to_spawn.item_pos.w = item_to_spawn.item_png->w * 4;
-    item_to_spawn.item_pos.h = item_to_spawn.item_png->h * 4;
+    item_to_spawn.item_pos.w = (item_to_spawn.item_png->w * 4 * render_factor);
+    item_to_spawn.item_pos.h = (item_to_spawn.item_png->h * 4 * render_factor);
     item_to_spawn.item_pos.x = x;
     item_to_spawn.item_pos.y = y;
 

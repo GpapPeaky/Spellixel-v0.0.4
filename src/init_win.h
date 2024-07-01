@@ -1,6 +1,7 @@
 #include "def.aux"
-#include <iostream>
 #include "sprites.h"
+#include <math.h>
+#include <iostream>
 #include <time.h>
 #include <SDL2/SDL_video.h>
 #include <SDL2/SDL_mixer.h>
@@ -14,7 +15,7 @@
 
 /* GENERAL USE VARIABLES */
 
-
+extern float render_factor;
 extern int true_x;
 extern int true_y;
 extern SDL_Window* win;

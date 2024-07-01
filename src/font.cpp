@@ -113,7 +113,6 @@ bool mouse_over_sprite(Enemy enemy, int x, int y){
 }
 
 Render_t render_on_mouse_hover(void){
-
     int mouseX, mouseY;
     SDL_GetMouseState(&mouseX, &mouseY);
 

@@ -8,6 +8,7 @@ SRCPATH = src/
 SPELLIXEL = Spellixel
 SP_FILES = $(SRCPATH)_main.cpp $(SRCPATH)init_win.cpp $(SRCPATH)weapon.cpp $(SRCPATH)player.cpp $(SRCPATH)mesh.cpp $(SRCPATH)enemy.cpp $(SRCPATH)fx.cpp $(SRCPATH)map_load.cpp $(SRCPATH)item.cpp $(SRCPATH)sound.cpp $(SRCPATH)font.cpp $(SRCPATH)ui.cpp $(SRCPATH)utils.cpp
 SP_RCOBJ = obj/resource.o
+SP_FLAGS = -Wunused-variable
 
 # EDITOR
 EDITOR = SpellixelEditor
@@ -18,7 +19,7 @@ SE_RCOBJ = obj/editor.o
 
 Spellixel: resource.o
 	@echo Compiling Spellixel...
-	$(CC) $(LIBF) $(INCF) $(SP_FILES) $(SP_RCOBJ) -o $(SPELLIXEL) $(SDLF)
+	$(CC) $(LIBF) $(SP_FLAGS) $(INCF) $(SP_FILES) $(SP_RCOBJ) -o $(SPELLIXEL) $(SDLF)
 	Spellixel.exe
 
 resource.o: resources/resource.rc
