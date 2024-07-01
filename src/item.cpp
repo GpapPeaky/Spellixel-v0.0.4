@@ -20,8 +20,8 @@ Init_t init_podium(void){
 
     SDL_FreeSurface(podium.item_png);
 
-    podium.item_pos.w = podium.item_png->w * 4;
-    podium.item_pos.h = podium.item_png->h * 4;
+    podium.item_pos.w = podium.item_png->w * 4 * render_factor;
+    podium.item_pos.h = podium.item_png->h * 4 * render_factor;
 }
 
 Update_t spawn_item(int x, int y, std::string item_name){
