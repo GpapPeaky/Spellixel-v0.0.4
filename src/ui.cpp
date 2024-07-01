@@ -36,10 +36,10 @@ Render_t render_ui_background(void){
 
 Render_t render_player_stats(void){
 
-    HP_rect = { 15 * render_factor, 1064 * render_factor, 55 * render_factor, 55 * render_factor };
-    att_rect = { 85 * render_factor, 1064 * render_factor, 55 * render_factor, 55 * render_factor }; /* 15 pixel space for each stat */
-    room_rect = { 155 * render_factor, 1064 * render_factor, 55 * render_factor, 55 * render_factor };
-    enemies_rect = { 240 * render_factor, 1064 * render_factor, 55 * render_factor, 55 * render_factor };
+    HP_rect = { 15, 1064, 55 * render_factor, 55 * render_factor };
+    att_rect = { 85, 1064, 55 * render_factor, 55 * render_factor }; /* 15 pixel space for each stat */
+    room_rect = { 155, 1064, 55 * render_factor, 55 * render_factor };
+    enemies_rect = { 240, 1064, 55 * render_factor, 55 * render_factor };
 
     render_text(("HP: " + std::to_string(pl.HP)).c_str(), &HP_rect);
     render_text(("ATT: " + std::to_string(pl.Bullets.dmg)).c_str(), &att_rect);
