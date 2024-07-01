@@ -36,6 +36,8 @@ Render_t render_ui_background(void){
 
 Render_t render_player_stats(void){
 
+    /* The Background Font doesn't work */
+
     HP_rect = { 15, 1064, 55 * render_factor, 55 * render_factor };
     att_rect = { 85, 1064, 55 * render_factor, 55 * render_factor }; /* 15 pixel space for each stat */
     room_rect = { 155, 1064, 55 * render_factor, 55 * render_factor };
