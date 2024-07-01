@@ -85,13 +85,13 @@ Render_t render_text(std::string msg, SDL_FRect* position){
     rect.h = text->h * render_factor;
     rect.w = text->w * render_factor;
 
-    b_rect.x = (rect.x + 2) * render_factor;
-    b_rect.y = (rect.y + 2) * render_factor;
-    b_rect.h = (text->h + 2) * render_factor;
-    b_rect.w = (text->w + 2) * render_factor;
+    b_rect.x = (rect.x * render_factor) + 2;
+    b_rect.y = (rect.y * render_factor) + 2;
+    b_rect.h = (text->h * render_factor);
+    b_rect.w = (text->w * render_factor);
 
-    c_rect.x = (rect.x - 2) * render_factor;
-    c_rect.y = (rect.y - 2) * render_factor;
+    c_rect.x = (rect.x * render_factor) - 2;
+    c_rect.y = (rect.y * render_factor) - 2;
     c_rect.h = text->h * render_factor;
     c_rect.w = text->w * render_factor;
 
