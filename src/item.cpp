@@ -41,11 +41,11 @@ Update_t spawn_item(int x, int y, std::string item_name){
 
     item_to_spawn.item_pos.w = (item_to_spawn.item_png->w * 4 * render_factor);
     item_to_spawn.item_pos.h = (item_to_spawn.item_png->h * 4 * render_factor);
-    item_to_spawn.item_pos.x = x;
-    item_to_spawn.item_pos.y = y;
+    item_to_spawn.item_pos.x = x * render_factor;
+    item_to_spawn.item_pos.y = y * render_factor;
 
-    podium.item_pos.x = x;
-    podium.item_pos.y = y;
+    podium.item_pos.x = x * render_factor;
+    podium.item_pos.y = y * render_factor;
 
     current_item = item_to_spawn;
     current_item.collected = false;

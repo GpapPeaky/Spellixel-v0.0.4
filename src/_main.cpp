@@ -26,6 +26,8 @@ MAIN_T main(int c, char** v){
 
     /*______________________________________________________________*/
 
+    goblin(150, 600);
+
     // init_podium(); /* Podium texture, ect */
     spawn_item(MID_X, MID_Y, "county_crown");
     // spawn_item(600, 600, "county_necklace");

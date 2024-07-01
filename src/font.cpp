@@ -40,18 +40,18 @@ Render_t render_on_player(const char* msg){
 
     SDL_FreeSurface(text);
 
-    rect.x = pl.pos.x - text->w / 2;
-    rect.y = pl.pos.y - 20;
+    rect.x = (pl.pos.x - text->w / 2) * render_factor;
+    rect.y = (pl.pos.y - 20) * render_factor;
     rect.h = text->h * render_factor;
     rect.w = text->w * render_factor;
 
-    b_rect.x = rect.x + 2;
-    b_rect.y = pl.pos.y - 20 + 2;
+    b_rect.x = (rect.x + 2) * render_factor;
+    b_rect.y = (pl.pos.y - 20 + 2) * render_factor;
     b_rect.h = (text->h + 2) * render_factor;
-    b_rect.w = (text->w + 2 * render_factor);
+    b_rect.w = (text->w + 2) * render_factor;
 
-    c_rect.x = rect.x - 2;
-    c_rect.y = pl.pos.y - 20 - 2;
+    c_rect.x = (rect.x - 2) * render_factor;
+    c_rect.y = (pl.pos.y - 20 - 2) * render_factor;
     c_rect.h = text->h * render_factor;
     c_rect.w = text->w * render_factor;
 
@@ -80,18 +80,18 @@ Render_t render_text(std::string msg, SDL_FRect* position){
 
     SDL_FreeSurface(text);
 
-    rect.x = position->x;
-    rect.y = position->y -20;
+    rect.x = (position->x) * render_factor;
+    rect.y = (position->y - 20) * render_factor;
     rect.h = text->h * render_factor;
     rect.w = text->w * render_factor;
 
-    b_rect.x = rect.x + 2;
-    b_rect.y = rect.y + 2;
-    b_rect.h = text->h + 2;
-    b_rect.w = text->w + 2;
+    b_rect.x = (rect.x + 2) * render_factor;
+    b_rect.y = (rect.y + 2) * render_factor;
+    b_rect.h = (text->h + 2) * render_factor;
+    b_rect.w = (text->w + 2) * render_factor;
 
-    c_rect.x = rect.x - 2;
-    c_rect.y = rect.y - 2;
+    c_rect.x = (rect.x - 2) * render_factor;
+    c_rect.y = (rect.y - 2) * render_factor;
     c_rect.h = text->h * render_factor;
     c_rect.w = text->w * render_factor;
 
