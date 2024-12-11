@@ -1,10 +1,12 @@
-#include "def.aux"
+#include "auxf/def.aux"
 #include "utils.h"
 #include "sprites.h"
 #include "init_win.h"
-#include <SDL2/SDL_image.h>
-#include <SDL2/SDL.h>
- 
+#include "SDL2/SDL.h"
+#include "SDL2/SDL_image.h"
+
+#pragma once
+
 extern SDL_FRect shadow;
 
 /**

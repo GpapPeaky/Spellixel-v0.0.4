@@ -1,12 +1,11 @@
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_ttf.h>
+#include "SDL2/SDL.h"
+#include "SDL2/SDL_ttf.h"
 #include <string>
 #include "init_win.h"
 #include "utils.h"
 #include "enemy.h"
 
-#ifndef UI
-#define UI
+#pragma once
 
 extern SDL_Color text_colour;
 extern SDL_Color text_colour_bg;
@@ -59,5 +58,3 @@ Render_t render_on_mouse_hover(void);
  *                 false if not
 */
 bool mouse_over_sprite(Enemy enemy, int x, int y);
-
-#endif/* UI */

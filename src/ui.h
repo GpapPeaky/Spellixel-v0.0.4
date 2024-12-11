@@ -1,12 +1,12 @@
 #include "utils.h"
 #include "init_win.h"
 #include "font.h"
-#include <SDL2/SDL_image.h>
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_ttf.h>
+#include "map_load.h"
+#include "SDL2/SDL.h"
+#include "SDL2/SDL_ttf.h"
+#include "SDL2/SDL_image.h"
 
-#ifndef user_interface
-#define user_interface
+#pragma once
 
 extern SDL_Rect ui_rect;
 extern SDL_Texture* ui_texture;
@@ -32,5 +32,3 @@ Render_t render_player_stats(void);
  * @brief Complete method for rendering the UI
 */
 Render_t render_UI(void);
-
-#endif /* UI */

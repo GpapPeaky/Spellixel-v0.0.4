@@ -9,7 +9,7 @@ void channel_finished_callback(int channel){
 
 void load_and_play_wav_music(std::string wav){
 
-    std::string filename = ("src/sfx/music/" + wav + ".wav");
+    std::string filename = ("assets/sfx/music/" + wav + ".wav");
 
     Mix_Chunk *sound = Mix_LoadWAV(filename.c_str());
     if(sound == NULL){
@@ -33,7 +33,7 @@ void load_and_play_wav_music(std::string wav){
 
 void load_and_play_wav_sound(std::string wav){
 
-    std::string filename = ("src/sfx/sound/" + wav + ".wav");
+    std::string filename = ("assets/sfx/sound/" + wav + ".wav");
 
     // Load WAV file
     Mix_Chunk *sound = Mix_LoadWAV(filename.c_str());

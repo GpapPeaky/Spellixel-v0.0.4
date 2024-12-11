@@ -1,8 +1,7 @@
 #include "init_win.h"
 #include "utils.h"
 
-#ifndef ITEM
-#define ITEM
+#pragma once
 
 extern std::vector<Item> items; /* Saves all item textures to load here */
 extern Item current_item;
@@ -36,5 +35,3 @@ void render_item_on_player(void);
  * @brief Renders the item on the map
 */
 void render_item(void);
-
-#endif /* Item */

@@ -1,14 +1,15 @@
-#include "_includes.i"
-#include "_mod.i"
+#include "weapon.h"
+#include "player.h"
+#include "mesh.h"
+#include "enemy.h"
+#include "map_load.h"
+#include "item.h"
+#include "sound.h"
+#include "utils.h"
+#include "font.h"
+#include "ui.h"
 
-#ifdef cpc_mod
-
-    Uint64 start, end, seconds;
-    SDL_FRect cpc_pos;
-
-#endif /* cpc_mod */
-
-MAIN_T main(int c, char** v){
+int main(int c, char** v){
 
     load_sprite_init("Spellixel.pix"); /* Initialise a window, a renderer and some universal sprites */
     init_font();
@@ -41,15 +42,6 @@ MAIN_T main(int c, char** v){
     bool not_running = RUNNING;
 
     while(!not_running){
-
-        #ifdef cpc_mod
-
-            start = SDL_GetPerformanceCounter();
-            cpc_pos.x = 0.0f;
-            cpc_pos.y = 25.0f;
-
-        #endif /* cpc_mod */
-
         /* Different maps at each next room */
         /* TODO: Move the fucking clock */
 

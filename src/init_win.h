@@ -1,17 +1,15 @@
-#include "def.aux"
+#include "auxf/def.aux"
 #include "sprites.h"
 #include <math.h>
 #include <iostream>
 #include <time.h>
-#include <SDL2/SDL_video.h>
-#include <SDL2/SDL_mixer.h>
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
-#include <SDL2/SDL_ttf.h>
-#include <string.h>
+#include "SDL2/SDL.h"
+#include "SDL2/SDL_mixer.h"
+#include "SDL2/SDL_ttf.h"
+#include "SDL2/SDL_image.h"
+#include <string>
 
-#ifndef LOAD_SPRITES
-#define LOAD_SPRITES 
+#pragma once
 
 /* GENERAL USE VARIABLES */
 
@@ -30,5 +28,3 @@ extern SDL_Cursor* CURSOR;
  * @param name Window name
 */
 void load_sprite_init(const char* name);
-
-#endif

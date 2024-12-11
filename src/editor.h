@@ -6,11 +6,10 @@
 #include <regex> 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
-#include "def.aux"
+#include "auxf/def.aux"
 #include "utils.h"
 
-#ifndef EDITOR
-#define EDITOR
+#pragma once
 
 extern SDL_Window* window;
 extern SDL_Renderer* renderer;
@@ -32,5 +31,3 @@ void tile_on_click(SDL_Event& event); /* Update type */
  * @brief Renders the tile map
 */
 void render(void);
-
-#endif /* EDITOR */

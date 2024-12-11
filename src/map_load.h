@@ -1,27 +1,18 @@
 #include "init_win.h"
 #include "utils.h"
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
+#include "enemy.h"
+#include "tiles.h"
+#include "SDL2/SDL.h"
+#include "SDL2/SDL_image.h"
 #include <vector>
 #include <iostream>
 #include <fstream>
 #include <string>
 
-#ifndef MAP_LOAD
-#define MAP_LOAD
+#pragma once
 
-typedef struct tile{
-    int tile_id;
-    SDL_Rect pos;
-    SDL_Surface* sprite_bmp;
-    SDL_Texture* sprite_texture;
-}Tiles;
-
-extern std::vector<struct tile> meshes;
 extern int current_map_idx;
 extern int total_rooms_count;
-
-#endif
 
 /* x -> 24, y -> 14 */
 /* We need the tile size as well */

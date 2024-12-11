@@ -10,7 +10,7 @@ SDL_FRect enemies_rect;
 
 Init_t init_ui(void){
 
-    SDL_Surface * ui = IMG_Load("src/sprites/win/ui.png");
+    SDL_Surface * ui = IMG_Load("assets/sprites/win/ui.png");
     if(ui == NULL){
         std::printf("%s\n",SDL_GetError());
     }

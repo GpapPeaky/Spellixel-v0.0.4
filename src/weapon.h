@@ -1,8 +1,7 @@
 #include "sound.h"
 #include "init_win.h"
 #include "fx.h"
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_timer.h>
+#include "SDL2/SDL.h"
 #include <chrono>
 #include <cmath>
 #include <vector>
@@ -10,8 +9,7 @@
 
 extern std::vector<Sprite> bullets; /* Vector with all bullets shot */
 
-#ifndef WEAPON
-#define WEAPON
+#pragma once
 
 /**
  * @brief Handles Shooting
@@ -31,5 +29,3 @@ void update_bullets(float deltaTime);
  * @brief Renders the bullets shot by the player
 */
 void render_player_bullets(void);
-
-#endif 

@@ -1,11 +1,10 @@
-#include  <SDL2/SDL_mixer.h>
-#include <SDL2/SDL.h>
+#include "SDL2/SDL.h"
+#include "SDL2/SDL_mixer.h"
 #include <string>
 #include "init_win.h"
-#include "def.aux"
+#include "auxf/def.aux"
 
-#ifndef SOUND
-#define SOUND
+#pragma once
 
 /**
  * @brief Fress the allocated memory of an audio channel
@@ -27,6 +26,3 @@ void load_and_play_wav_music(std::string wav);
  * @param wav Wav file to be loaded 
 */
 void load_and_play_wav_sound(std::string wav);
-
-
-#endif /* SOUND */

@@ -1,12 +1,19 @@
 CC = g++
 SDLF = -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf
-LIBF = -Lsrc/lib
-INCF = -Isrc/include
+LIBF = -LThirdparty/SDL2/lib
+INCF = -IThirdparty/SDL2/include
 SRCPATH = src/
 
 # SPELLIXEL
 SPELLIXEL = Spellixel
-SP_FILES = $(SRCPATH)_main.cpp $(SRCPATH)init_win.cpp $(SRCPATH)weapon.cpp $(SRCPATH)player.cpp $(SRCPATH)mesh.cpp $(SRCPATH)enemy.cpp $(SRCPATH)fx.cpp $(SRCPATH)map_load.cpp $(SRCPATH)item.cpp $(SRCPATH)sound.cpp $(SRCPATH)font.cpp $(SRCPATH)ui.cpp $(SRCPATH)utils.cpp
+SP_FILES = $(SRCPATH)_main.cpp\
+$(SRCPATH)init_win.cpp\
+$(SRCPATH)weapon.cpp $(SRCPATH)player.cpp \
+$(SRCPATH)mesh.cpp $(SRCPATH)enemy.cpp \
+$(SRCPATH)fx.cpp $(SRCPATH)map_load.cpp $(SRCPATH)item.cpp \
+$(SRCPATH)sound.cpp $(SRCPATH)font.cpp $(SRCPATH)ui.cpp \
+$(SRCPATH)utils.cpp
+
 SP_RCOBJ = obj/resource.o
 SP_FLAGS = -Wunused-variable
 
@@ -22,8 +29,8 @@ Spellixel: resource.o
 	$(CC) $(LIBF) $(SP_FLAGS) $(INCF) $(SP_FILES) $(SP_RCOBJ) -o $(SPELLIXEL) $(SDLF)
 	Spellixel.exe
 
-resource.o: resources/resource.rc
-	windres -o obj/resource.o resources/resource.rc
+resource.o: scripts/resources/resource.rc
+	windres -o obj/resource.o scripts/resources/resource.rc
 
 ################################################
 

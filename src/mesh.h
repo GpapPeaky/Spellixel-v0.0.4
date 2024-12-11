@@ -1,11 +1,11 @@
 #include "init_win.h"
-#include "def.aux"
+#include "map_load.h"
+#include "sprites.h"
+#include "auxf/def.aux"
 #include <vector>
 #include <algorithm>
-#include "map_load.h"
 
-#ifndef MESH
-#define MESH
+#pragma once
 
 /**
  * @brief Check collisions between the BULLETS and the meshes
@@ -37,5 +37,3 @@ void mesh_collisions(std::vector <Bullet> &bullet_array);
  * @brief Updates meshes' position 
 */
 void update_mesh_positions();
-
-#endif

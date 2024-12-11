@@ -11,7 +11,7 @@ Item podium;
 Init_t init_podium(void){
     podium.name = "podium";
 
-    podium.item_png = IMG_Load("src/sprites/items/podium.png");
+    podium.item_png = IMG_Load("assets/sprites/items/podium.png");
     if (podium.item_png == nullptr) {
         printf("Error loading image: %s\n", IMG_GetError());
     }
@@ -27,7 +27,7 @@ Init_t init_podium(void){
 Update_t spawn_item(int x, int y, std::string item_name){
 
     Item item_to_spawn;
-    std::string filename = ("src/sprites/items/" + item_name +  ".png");
+    std::string filename = ("assets/sprites/items/" + item_name +  ".png");
     item_to_spawn.name = item_name;
 
     item_to_spawn.item_png = IMG_Load(filename.c_str());

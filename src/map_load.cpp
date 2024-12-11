@@ -1,5 +1,4 @@
 #include "map_load.h"
-#include "enemy.h"
 
 /* Always one up 1-TEXTURES */
 
@@ -35,7 +34,7 @@ Render_t render_background_tiles(std::vector<std::vector<int>>& map){
     SDL_Texture* textures[TEXTURES];
 
     for(int i = 1 ; i < TEXTURES ; i++){
-        std::string texture_path = "src/sprites/tiles/tile (" + std::to_string(i) + ").png"; /* Take the path */
+        std::string texture_path = "assets/sprites/tiles/tile (" + std::to_string(i) + ").png"; /* Take the path */
         SDL_Surface* surface = IMG_Load(texture_path.c_str());
         textures[i] = SDL_CreateTextureFromSurface(renderer, surface); 
         SDL_FreeSurface(surface);
@@ -61,7 +60,7 @@ Render_t render_mesh_tiles(std::vector<std::vector<int>>& map){
     meshes.clear();
 
     for(int i = 0 ; i < TEXTURES ; i++){
-        std::string texture_path = "src/sprites/tiles/tile (" + std::to_string(i) + ").png"; /* Take the path */
+        std::string texture_path = "assets/sprites/tiles/tile (" + std::to_string(i) + ").png"; /* Take the path */
         textures[i].sprite_bmp = IMG_Load(texture_path.c_str());
         textures[i].sprite_texture = SDL_CreateTextureFromSurface(renderer, textures[i].sprite_bmp); 
         SDL_FreeSurface(textures[i].sprite_bmp);

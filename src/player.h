@@ -1,14 +1,13 @@
-#include <SDL2/SDL.h>
-#include <unordered_set>
+#include "auxf/def.aux"
+#include "SDL2/SDL.h"
 #include "enemy.h"
 #include "item.h"
 #include "fx.h"
 #include "utils.h"
 #include "weapon.h"
-#include "def.aux"
+#include <unordered_set>
 
-#ifndef PLAYER
-#define PLAYER
+#pragma once
 
 /**
  * @brief Handles player input (Movement)
@@ -29,5 +28,3 @@ void update_player(float deltaTime);
  * @brief Renders the player model
 */
 void render_player_and_enemies(void);
-
-#endif

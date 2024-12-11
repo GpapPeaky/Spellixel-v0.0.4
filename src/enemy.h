@@ -1,17 +1,16 @@
+#include "auxf/def.aux"
+#include "tiles.h"
 #include "init_win.h"
-#include "def.aux"
-#include "mesh.h"
 #include "utils.h"
 #include "fx.h"
-#include <SDL2/SDL_ttf.h>
+#include "SDL2/SDL.h"
 #include <time.h>
 #include <cmath>
 #include <algorithm>
 #include <chrono>
 #include <string>
 
-#ifndef ENEMY
-#define ENEMY
+#pragma once
 
 extern SDL_Color e_text_colour;
 extern SDL_Color e_text_colour_bg;
@@ -241,5 +240,3 @@ void print_enemies();
  * @returns Number of agressive enemies
  */
 uint scan_for_aggr_enemies();
-
-#endif /* ENEMY */

@@ -12,7 +12,7 @@ SDL_FRect c_rect;
 
 Init_t init_font(void){
 
-    font = TTF_OpenFont("src/font/FFFFORWA.TTF", FONT_SIZE);
+    font = TTF_OpenFont("assets/font/FFFFORWA.TTF", FONT_SIZE);
     if(!font){
         std:printf("FONT: %s\n ", SDL_GetError());
     }

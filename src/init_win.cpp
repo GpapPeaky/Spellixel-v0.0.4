@@ -47,14 +47,14 @@ void load_sprite_init(const char* name){
 
     /*___________________________________________________________________________________________*/
 
-    SDL_Surface* icon = IMG_Load("src/sprites/icon.png");
+    SDL_Surface* icon = IMG_Load("assets/sprites/icon.png");
 
     win = SDL_CreateWindow(name,0,0,SCREEN_HEIGHT,SCREEN_WIDTH,SDL_WINDOW_FULLSCREEN_DESKTOP | SDL_WINDOW_OPENGL); /* Create A Window */
     renderer = SDL_CreateRenderer(win,-1,SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC); /* Sprite Rendering */
     SDL_GetWindowSize(win, &screen_x, &screen_y);
     SDL_SetWindowIcon(win, icon);
 
-    pl.sprite_bmp = IMG_Load("src/sprites/pitt.png"); /* PLAYER TEXTURE */
+    pl.sprite_bmp = IMG_Load("assets/sprites/pitt.png"); /* PLAYER TEXTURE */
 
     pl.HP = 100; /* Base health */
     pl.Bullets.dmg = 5; /* Base damage */
@@ -70,7 +70,7 @@ void load_sprite_init(const char* name){
 
     Sprite cursor; /* Load it as a sprite (Surface will be deleted later) */
 
-    cursor.sprite_bmp = IMG_Load("src/sprites/cursor.png"); /* It show the actual size of the image */                                      
+    cursor.sprite_bmp = IMG_Load("assets/sprites/cursor.png"); /* It show the actual size of the image */                                      
 
     SDL_Cursor* CURSOR = SDL_CreateColorCursor(cursor.sprite_bmp,0,0);                          
 
